@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Waitlist {
+  id        String   @id @default(uuid())
+  googleId  String   @unique @map("google_id")
+  email     String   @unique
+  name      String?
+  picture   String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("waitlists")
+}
+
+model Analytics {
+  id        String   @id @default(uuid())
+  page      String   @default("/")
+  visitorId String?  @map("visitor_id")
+  device    String?
+  browser   String?
+  country   String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("analytics")
+}
+
+model Visitor {
+  id        String   @id @default(uuid())
+  count     Int      @default(1)
+  date      DateTime @unique
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("visitors")
+}
+
+model Feedback {
+  id        String   @id @default(uuid())
+  name      String?
+  suggestion String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("feedbacks")
+}
