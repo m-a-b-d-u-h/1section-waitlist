@@ -4,7 +4,6 @@ import PreviewCarousel from "@/components/preview-carousel"
 import Features from "@/components/features"
 import Statistics from "@/components/statistics"
 import Analysis from "@/components/analysis"
-import Benefits from "@/components/benefits"
 import Feedback from "@/components/feedback"
 import FAQ from "@/components/faq"
 import FinalCta from "@/components/final-cta"
@@ -21,7 +20,6 @@ export default function Home() {
         <Statistics />
         <Analysis />
         <Feedback />
-        <Benefits />
         <FAQ />
         <FinalCta />
       </main>

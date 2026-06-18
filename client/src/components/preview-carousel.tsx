@@ -259,8 +259,8 @@ const pages = [
 
 export default function PreviewCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "center", skipSnaps: false, dragFree: true },
-    [Autoplay({ delay: 6000, stopOnInteraction: false })]
+    { loop: true, align: "center", skipSnaps: false, dragFree: false },
+    [Autoplay({ delay: 5000, stopOnInteraction: false })]
   )
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi])
