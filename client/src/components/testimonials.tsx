@@ -64,13 +64,13 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group rounded-2xl border border-white/5 bg-[#050505] p-8 transition-all duration-300 hover:border-white/10 hover:-translate-y-0.5"
+              className="group rounded-2xl border border-white/10 bg-[#050505] p-8 transition-all duration-300 hover:border-white/10 hover:-translate-y-0.5"
             >
               <Quote size={24} className="mb-4 text-[#1a1a1a]" />
               <p className="mb-6 text-sm leading-relaxed text-[#a3a3a3]">
                 &ldquo;{t.text}&rdquo;
               </p>
-              <div className="flex items-center gap-4 border-t border-white/5 pt-5">
+              <div className="flex items-center gap-4 border-t border-white/10 pt-5">
                 <div
                   className="flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold"
                   style={{ background: `${t.color}15`, color: t.color }}

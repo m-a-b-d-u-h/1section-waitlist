@@ -36,7 +36,7 @@ const linkGroups = [
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-white/5">
+    <footer className="w-full border-t border-white/10">
       <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="space-y-4 lg:col-span-2">
@@ -76,7 +76,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-16 border-t border-white/5 pt-8 text-center text-xs text-[#525252]">
+        <div className="mt-16 border-t border-white/10 pt-8 text-center text-xs text-[#525252]">
           &copy; {new Date().getFullYear()} 1section. All rights reserved.
         </div>
       </div>

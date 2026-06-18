@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { motion, useInView } from "framer-motion"
+import { Eye, Users, TrendingUp, MessageSquare } from "lucide-react"
 
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000"
 
@@ -10,6 +11,8 @@ type StatsData = {
   visitors: number
   feedback: number
 }
+
+const icons = [Eye, Users, TrendingUp, MessageSquare]
 
 function AnimatedCounter({ to, suffix }: { to: number; suffix: string }) {
   const [count, setCount] = useState(0)
@@ -74,10 +77,10 @@ export default function Statistics() {
       : 0
 
   const stats = [
-    { value: data.visitors, suffix: "", label: "total visitors", icon: "👀" },
-    { value: data.waitlist, suffix: "", label: "waitlist signups", icon: "👥" },
-    { value: conversionRate, suffix: "%", label: "conversion rate", icon: "📊" },
-    { value: data.feedback, suffix: "", label: "feedback submissions", icon: "💬" },
+    { value: data.visitors, suffix: "", label: "Total Visitors" },
+    { value: data.waitlist, suffix: "", label: "Waitlist Signups" },
+    { value: conversionRate, suffix: "%", label: "Conversion Rate" },
+    { value: data.feedback, suffix: "", label: "Feedback Submissions" },
   ]
 
   return (
@@ -90,40 +93,50 @@ export default function Statistics() {
           className="mb-16 text-center"
         >
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#525252]">
-            Impact
+            Statistics
           </p>
           <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl">
-            Growing every{" "}
-            <span className="text-[#525252]">day</span>
+            By the{" "}
+            <span className="text-[#525252]">Numbers</span>
           </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-lg text-[#a3a3a3]">
+            Real-time stats from the platform.
+          </p>
         </motion.div>
 
-        <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-[#050505]">
-          <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute left-1/4 top-0 h-px w-1/2 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-          </div>
-          <div className="grid divide-y divide-white/5 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
-            {stats.map((stat, i) => (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {stats.map((stat, i) => {
+            const Icon = icons[i]
+            return (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="flex flex-col items-center px-8 py-12 text-center transition-colors duration-300 hover:bg-white/[0.02]"
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#050505] p-8 transition-all duration-300 hover:border-white/20"
               >
-                <span className="text-3xl">{stat.icon}</span>
-                <span className="mt-4 font-heading text-4xl font-black sm:text-5xl" style={{ background: 'linear-gradient(to right, #fff, #a3a3a3)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                  {loaded ? <AnimatedCounter to={stat.value} suffix={stat.suffix} /> : <span>0</span>}
-                </span>
-                <span className="mt-2 text-sm text-[#737373]">{stat.label}</span>
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.03),transparent_60%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="relative">
+                  <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03]">
+                    <Icon className="h-5 w-5 text-[#a3a3a3]" />
+                  </div>
+                  <p className="font-heading text-4xl font-black tracking-[-0.02em] sm:text-5xl">
+                    {loaded ? (
+                      <AnimatedCounter to={stat.value} suffix={stat.suffix} />
+                    ) : (
+                      <span className="text-[#525252]">—</span>
+                    )}
+                  </p>
+                  <p className="mt-2 text-sm text-[#737373]">{stat.label}</p>
+                </div>
               </motion.div>
-            ))}
-          </div>
+            )
+          })}
         </div>
 
         {!loaded && (
-          <p className="mt-4 text-center text-xs text-[#525252]">Loading stats...</p>
+          <p className="mt-6 text-center text-xs text-[#525252]">Loading stats...</p>
         )}
       </div>
     </section>

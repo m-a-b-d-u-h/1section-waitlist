@@ -2,10 +2,15 @@
 
 import { motion } from "framer-motion"
 import { useGoogleLogin } from "@react-oauth/google"
-import { ChevronDown, ArrowRight, Check } from "lucide-react"
+import { ArrowRight, Check } from "lucide-react"
 import { useAuth } from "@/lib/auth-context"
 
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000"
+
+const modelWords = [
+  "Inversion", "Occam", "Pareto", "Bayesian", "Entropy",
+  "Hanlon", "Parkinson", "Dunbar", "Hofstadter", "Sturgeon",
+]
 
 function GoogleLogo() {
   return (
@@ -36,18 +41,15 @@ export default function Hero() {
     onSuccess: async (tokenResponse) => {
       try {
         const accessToken = tokenResponse.access_token
-
         const userRes = await fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
           headers: { Authorization: `Bearer ${accessToken}` },
         })
         const userData = await userRes.json()
-
         setUser({
           name: userData.name || userData.email,
           email: userData.email,
           picture: userData.picture || "",
         })
-
         await joinWaitlist(accessToken)
       } catch (err) {
         console.error("Login failed:", err)
@@ -56,97 +58,137 @@ export default function Hero() {
     onError: () => console.error("Google login failed"),
   })
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.12, delayChildren: 0.3 },
+    },
+  }
+
+  const ease = [0.16, 1, 0.3, 1] as const
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease } },
+  }
+
   return (
-    <section className="relative min-h-screen overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, #fff 0.5px, transparent 0.5px)", backgroundSize: "48px 48px" }} />
-        <div className="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-white/[0.02] blur-3xl" />
-        <div className="absolute right-0 top-1/3 h-[400px] w-[400px] rounded-full bg-white/[0.015] blur-3xl" />
-      </div>
-
-      <div className="relative mx-auto flex min-h-screen max-w-[1200px] flex-col items-center justify-center px-4 sm:px-6">
+    <section className="relative min-h-screen overflow-hidden bg-black">
+      <div className="pointer-events-none absolute inset-0">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-center text-center max-w-4xl"
-        >
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-xs font-medium tracking-wider text-[#a3a3a3]">
-            <div className="h-1.5 w-1.5 rounded-full bg-[#a3a3a3]" />
-            A thinking library for the curious mind
-          </div>
-
-          <h1 className="font-heading text-5xl font-black leading-[1.05] tracking-[-0.04em] sm:text-6xl md:text-7xl lg:text-8xl">
-            Master your{" "}
-            <span className="text-[#a3a3a3]">thinking</span>
-            .
-          </h1>
-
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-[#737373] sm:text-lg">
-            Explore 200+ mental models, audio lessons, and interactive knowledge
-            graphs. Learn how the world&apos;s top thinkers make decisions.
-          </p>
-
-          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
-            {user ? (
-              <div className="inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.05] px-6 py-3">
-                {user.picture ? (
-                  <img src={user.picture} alt="" referrerPolicy="no-referrer" className="h-8 w-8 rounded-full" />
-                ) : (
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] text-xs font-bold text-[#a3a3a3]">
-                    {user.name[0]}
-                  </div>
-                )}
-                <div className="text-left">
-                  <p className="text-sm font-medium text-white">{user.name}</p>
-                  <p className="flex items-center gap-1 text-xs text-[#a3a3a3]">
-                    <Check size={10} />
-                    On the waitlist
-                  </p>
-                </div>
-              </div>
-            ) : (
-              <>
-                <button
-                  onClick={() => login()}
-                  className="group inline-flex items-center gap-3 rounded-xl border border-white/20 bg-white px-7 py-3.5 text-sm font-semibold text-black transition-all duration-300 hover:bg-[#e5e5e5]"
-                >
-                  <GoogleLogo />
-                  Join Waitlist with Google
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </button>
-                <span className="text-xs text-[#525252]">No password needed</span>
-              </>
-            )}
-          </div>
-
-          <div className="mt-12 flex items-center gap-8 text-xs text-[#525252]">
-            <div className="flex items-center gap-2">
-              <div className="h-3 w-3 rounded-full border border-white/20 bg-white/5" />
-              200+ models
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="h-3 w-3 rounded-full border border-white/20 bg-white/5" />
-              22 categories
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="h-3 w-3 rounded-full border border-white/20 bg-white/5" />
-              Audio lessons
-            </div>
-          </div>
-        </motion.div>
+          animate={{ x: [0, 120, 0], y: [0, -60, 0] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="absolute -left-40 -top-40 h-[600px] w-[600px] rounded-full bg-white/[0.03] blur-3xl"
+        />
+        <motion.div
+          animate={{ x: [0, -80, 0], y: [0, 80, 0] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="absolute -right-40 top-1/4 h-[500px] w-[500px] rounded-full bg-white/[0.02] blur-3xl"
+        />
+        <motion.div
+          animate={{ x: [0, -60, 0], y: [0, -100, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-0 left-1/3 h-[400px] w-[400px] rounded-full bg-white/[0.015] blur-3xl"
+        />
       </div>
 
-      <motion.a
-        href="#preview"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs text-[#525252] transition-colors hover:text-white"
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden opacity-[0.04]">
+        <div className="grid grid-cols-5 gap-x-16 gap-y-10 text-[11px] font-bold uppercase tracking-[0.2em] text-white select-none">
+          {modelWords.map((word, i) => (
+            <motion.span
+              key={word}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1 + i * 0.15, duration: 0.8 }}
+            >
+              {word}
+            </motion.span>
+          ))}
+        </div>
+      </div>
+
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative mx-auto flex min-h-screen max-w-[1200px] flex-col items-center justify-center px-4 sm:px-6"
       >
-        <span>Explore the library</span>
-        <ChevronDown className="h-4 w-4 animate-bounce" />
-      </motion.a>
+        <motion.div
+          variants={itemVariants}
+          className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2 text-xs font-medium tracking-wider text-[#a3a3a3] backdrop-blur-sm"
+        >
+          <div className="h-1.5 w-1.5 rounded-full bg-[#a3a3a3] animate-pulse" />
+          A thinking library for the curious mind
+        </motion.div>
+
+        <motion.h1
+          variants={itemVariants}
+          className="font-heading text-5xl font-black leading-[1.05] tracking-[-0.04em] sm:text-6xl md:text-7xl lg:text-8xl"
+        >
+          Master your{" "}
+          <span className="text-[#a3a3a3]">thinking</span>
+          .
+        </motion.h1>
+
+        <motion.p
+          variants={itemVariants}
+          className="mt-6 max-w-xl text-center text-base leading-relaxed text-[#737373] sm:text-lg"
+        >
+          Explore 200+ mental models, audio lessons, and interactive knowledge
+          graphs. Learn how the world&apos;s top thinkers make decisions.
+        </motion.p>
+
+        <motion.div variants={itemVariants} className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
+          {user ? (
+            <div className="inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.05] px-6 py-3 backdrop-blur-sm">
+              {user.picture ? (
+                <img src={user.picture} alt="" referrerPolicy="no-referrer" className="h-9 w-9 rounded-full" />
+              ) : (
+                <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] text-sm font-bold text-[#a3a3a3]">
+                  {user.name[0]}
+                </div>
+              )}
+              <div className="text-left">
+                <p className="text-sm font-medium text-white">{user.name}</p>
+                <p className="flex items-center gap-1 text-xs text-[#a3a3a3]">
+                  <Check size={10} />
+                  On the waitlist
+                </p>
+              </div>
+            </div>
+          ) : (
+            <>
+              <button
+                onClick={() => login()}
+                className="group inline-flex items-center gap-3 rounded-xl border border-white/20 bg-white px-7 py-3.5 text-sm font-semibold text-black transition-all duration-300 hover:bg-[#e5e5e5] hover:shadow-xl hover:shadow-white/10"
+              >
+                <GoogleLogo />
+                Join Waitlist with Google
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </button>
+              <span className="text-xs text-[#525252]">No password needed</span>
+            </>
+          )}
+        </motion.div>
+
+        <motion.a
+          href="#preview"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.4 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs text-[#525252] transition-colors hover:text-white"
+        >
+          <span>Scroll to explore</span>
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M4 6l4 4 4-4" />
+            </svg>
+          </motion.div>
+        </motion.a>
+      </motion.div>
     </section>
   )
 }

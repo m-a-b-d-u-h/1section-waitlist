@@ -52,7 +52,7 @@ export default function Benefits() {
           </p>
         </motion.div>
 
-        <div className="grid gap-px overflow-hidden rounded-2xl border border-white/5 bg-white/5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 sm:grid-cols-2 lg:grid-cols-4">
           {benefits.map((benefit, i) => (
             <motion.div
               key={benefit.title}

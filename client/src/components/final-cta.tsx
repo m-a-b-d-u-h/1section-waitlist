@@ -64,7 +64,7 @@ export default function FinalCta() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-b from-[#050505] to-black p-10 sm:p-16"
+          className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-[#050505] to-black p-10 sm:p-16"
         >
           <div className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute -right-32 -top-32 h-80 w-80 rounded-full bg-white/[0.03] blur-3xl" />
@@ -76,18 +76,18 @@ export default function FinalCta() {
             <div className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-[#a3a3a3]">
               {user ? <Check size={14} /> : <Crown size={14} />}
               <span className="text-xs font-bold uppercase tracking-wider">
-                {user ? "You&apos;re on the list" : "Unlock Full Access"}
+                {user ? "You're on the list" : "Unlock Full Access"}
               </span>
             </div>
 
             <h2 className="font-heading mt-8 text-3xl font-black tracking-[-0.04em] sm:text-4xl md:text-5xl">
               {user
-                ? `You&apos;re in, ${user.name.split(" ")[0]}!`
+                ? `You're in, ${user.name.split(" ")[0]}!`
                 : "Ready to master your mind?"}
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-[#737373]">
               {user
-                ? "We&apos;ll notify you when 1section launches. In the meantime, tell your friends about the waitlist."
+                ? "We'll notify you when 1section launches. In the meantime, tell your friends about the waitlist."
                 : "Join the waitlist and be the first to access the complete library of mental models, knowledge graphs, and learning tools."}
             </p>
 

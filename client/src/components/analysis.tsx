@@ -49,7 +49,7 @@ export default function Analysis() {
           </p>
           <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl">
             What&apos;s coming to{" "}
-            <span className="text-[#444]">1section</span>
+            <span className="text-[#525252]">1section</span>
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-lg text-[#a3a3a3]">
             Every feature is designed to help you collect, connect, and apply
@@ -65,7 +65,7 @@ export default function Analysis() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl border border-white/5 bg-[#050505] p-8 transition-all duration-300 hover:border-white/10"
+              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#050505] p-8 transition-all duration-300 hover:border-white/10"
             >
               <div
                 className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full opacity-0 transition-all duration-500 group-hover:opacity-100"

@@ -38,7 +38,7 @@ export default function Feedback() {
           viewport={{ once: true }}
           className="mx-auto max-w-3xl"
         >
-          <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-[#050505] p-10 sm:p-16">
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#050505] p-10 sm:p-16">
             <div className="pointer-events-none absolute inset-0 -z-10">
               <div className="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-white/[0.03] blur-3xl" />
               <div className="absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-white/[0.03] blur-3xl" />
@@ -54,12 +54,12 @@ export default function Feedback() {
               <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#525252]">
                 Feedback
               </p>
-              <h2 className="font-heading text-3xl font-black tracking-[-0.04em] sm:text-4xl md:text-5xl">
-                Have a feature idea?
+              <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl">
+                Have a Feature{" "}
+                <span className="text-[#525252]">Idea?</span>
               </h2>
-              <p className="mx-auto mt-4 max-w-lg text-[#a3a3a3]">
-                Your feedback shapes 1section. Tell us what mental models or
-                features you&apos;d love to see.
+              <p className="mx-auto mt-3 max-w-2xl text-lg text-[#a3a3a3]">
+                Your feedback shapes 1section. Tell us what you&apos;d love to see.
               </p>
             </div>
 

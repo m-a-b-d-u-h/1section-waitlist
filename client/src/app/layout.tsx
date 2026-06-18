@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { AuthProvider } from "@/lib/auth-context";
+import VisitTracker from "@/components/visit-tracker";
 
 export const metadata: Metadata = {
   title: "1section",
@@ -29,6 +30,7 @@ export default function RootLayout({
           clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || ""}
         >
           <AuthProvider>
+            <VisitTracker />
             {children}
           </AuthProvider>
         </GoogleOAuthProvider>

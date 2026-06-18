@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 
 const faqs = [
   {
@@ -45,54 +45,58 @@ export default function FAQ() {
             Frequently Asked{" "}
             <span className="text-[#525252]">Questions</span>
           </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-lg text-[#a3a3a3]">
+            Everything you need to know about 1section.
+          </p>
         </motion.div>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 5 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
+                transition={{ delay: i * 0.06 }}
+                className="overflow-hidden rounded-2xl border border-white/10 bg-[#050505] transition-colors duration-200 hover:border-white/20"
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className={`w-full rounded-xl border p-6 text-left transition-all duration-200 ${
-                    isOpen
-                      ? "border-white/10 bg-white/5"
-                      : "border-white/5 bg-[#0b0d14]"
-                  }`}
+                  className="w-full p-6 text-left"
                 >
                   <div className="flex items-center justify-between gap-4">
                     <span className="font-heading text-base font-bold text-white">
                       {faq.q}
                     </span>
-                    <div
-                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg transition-all duration-200 ${
-                        isOpen ? "bg-white/10" : "bg-white/5"
-                      }`}
-                    >
-                      <div
-                        className={`h-2.5 w-2.5 border-r-2 border-b-2 border-[#a3a3a3] transition-transform duration-200 ${
-                          isOpen ? "rotate-[-135deg] mt-[-4px]" : "rotate-45"
-                        }`}
-                      />
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white/[0.03] transition-colors duration-200">
+                      <motion.div
+                        animate={{ rotate: isOpen ? 45 : 0 }}
+                        transition={{ duration: 0.2, ease: "easeInOut" }}
+                        className="relative h-3 w-3"
+                      >
+                        <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-[#a3a3a3]" />
+                        <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-[#a3a3a3]" />
+                      </motion.div>
                     </div>
                   </div>
                 </button>
-                {isOpen && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    className="-mt-px rounded-b-xl border border-white/5 border-t-0 bg-white/5 p-5"
-                  >
-                    <p className="text-sm leading-relaxed text-[#737373]">{faq.a}</p>
-                  </motion.div>
-                )}
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <div className="px-6 pb-6 pt-0">
+                        <div className="h-px w-full bg-white/5 mb-4" />
+                        <p className="text-sm leading-relaxed text-[#737373]">{faq.a}</p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             )
           })}

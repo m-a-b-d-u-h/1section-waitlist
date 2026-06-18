@@ -16,7 +16,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 z-50 w-full">
-      <div className="absolute inset-0 border-b border-white/5 bg-black/70 backdrop-blur-2xl" />
+      <div className="absolute inset-0 border-b border-white/10 bg-black/70 backdrop-blur-2xl" />
       <div className="relative mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2">
           <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-xs font-black text-black">
@@ -54,7 +54,7 @@ export default function Navbar() {
 
       <div
         className={cn(
-          "overflow-hidden border-b border-white/5 bg-black/95 backdrop-blur-2xl transition-all duration-300 sm:hidden",
+          "overflow-hidden border-b border-white/10 bg-black/95 backdrop-blur-2xl transition-all duration-300 sm:hidden",
           open ? "max-h-80" : "max-h-0"
         )}
       >

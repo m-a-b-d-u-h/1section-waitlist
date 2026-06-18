@@ -4,7 +4,6 @@ import PreviewCarousel from "@/components/preview-carousel"
 import Features from "@/components/features"
 import Statistics from "@/components/statistics"
 import Analysis from "@/components/analysis"
-import Testimonials from "@/components/testimonials"
 import Benefits from "@/components/benefits"
 import Feedback from "@/components/feedback"
 import FAQ from "@/components/faq"
@@ -21,7 +20,6 @@ export default function Home() {
         <Features />
         <Statistics />
         <Analysis />
-        <Testimonials />
         <Feedback />
         <Benefits />
         <FAQ />

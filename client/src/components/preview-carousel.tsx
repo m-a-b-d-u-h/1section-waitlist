@@ -15,7 +15,7 @@ interface PageMockupProps {
 function PageMockup({ title, url, children }: PageMockupProps) {
   return (
     <div className="overflow-hidden rounded-xl border border-white/10 bg-[#050505] shadow-2xl shadow-black/50">
-      <div className="flex items-center gap-3 border-b border-white/5 bg-black px-4 py-3">
+      <div className="flex items-center gap-3 border-b border-white/10 bg-black px-4 py-3">
         <div className="flex gap-1.5">
           <div className="h-2.5 w-2.5 rounded-full bg-[#525252]" />
           <div className="h-2.5 w-2.5 rounded-full bg-[#525252]" />
@@ -52,25 +52,25 @@ const pages = [
           </div>
         </div>
         <div className="mb-4 grid grid-cols-3 gap-3">
-          <div className="rounded-lg border border-white/5 bg-white/[0.02] p-3">
+          <div className="rounded-lg border border-white/10 bg-white/[0.02] p-3">
             <div className="mb-1 h-6 w-12 rounded bg-white/10" />
             <div className="h-3 w-20 rounded bg-white/5" />
           </div>
-          <div className="rounded-lg border border-white/5 bg-white/[0.02] p-3">
+          <div className="rounded-lg border border-white/10 bg-white/[0.02] p-3">
             <div className="mb-1 h-6 w-12 rounded bg-white/10" />
             <div className="h-3 w-20 rounded bg-white/5" />
           </div>
-          <div className="rounded-lg border border-white/5 bg-white/[0.02] p-3">
+          <div className="rounded-lg border border-white/10 bg-white/[0.02] p-3">
             <div className="mb-1 h-6 w-12 rounded bg-white/10" />
             <div className="h-3 w-20 rounded bg-white/5" />
           </div>
         </div>
         <div className="grid grid-cols-2 gap-3">
-          <div className="rounded-lg border border-white/5 bg-white/[0.02] p-3">
+          <div className="rounded-lg border border-white/10 bg-white/[0.02] p-3">
             <div className="mb-2 h-3 w-24 rounded bg-white/5" />
             <div className="h-16 rounded bg-white/[0.03]" />
           </div>
-          <div className="rounded-lg border border-white/5 bg-white/[0.02] p-3">
+          <div className="rounded-lg border border-white/10 bg-white/[0.02] p-3">
             <div className="mb-2 h-3 w-24 rounded bg-white/5" />
             <div className="mb-2 h-3 w-full rounded bg-white/[0.03]" />
             <div className="mb-2 h-3 w-3/4 rounded bg-white/[0.03]" />
@@ -88,7 +88,7 @@ const pages = [
     mockup: (
       <div className="aspect-video p-4 sm:p-6">
         <div className="mb-4 flex items-center gap-3">
-          <div className="h-8 flex-1 rounded-lg border border-white/5 bg-white/[0.02] px-3" />
+          <div className="h-8 flex-1 rounded-lg border border-white/10 bg-white/[0.02] px-3" />
           <div className="flex gap-2">
             <div className="h-8 w-20 rounded-lg bg-white/5" />
           </div>
@@ -97,7 +97,7 @@ const pages = [
           {["All", "Mindset", "Clarity", "Habit", "Strategy"].map((tag) => (
             <div
               key={tag}
-              className="rounded-full border border-white/5 bg-white/[0.02] px-3 py-1"
+              className="rounded-full border border-white/10 bg-white/[0.02] px-3 py-1"
             >
               <div className="h-2.5 w-12 rounded bg-white/5" />
             </div>
@@ -107,7 +107,7 @@ const pages = [
           {[...Array(6)].map((_, i) => (
             <div
               key={i}
-              className="rounded-lg border border-white/5 bg-white/[0.02] p-3"
+              className="rounded-lg border border-white/10 bg-white/[0.02] p-3"
             >
               <div className="mb-2 h-8 w-8 rounded-lg bg-white/5" />
               <div className="mb-1 h-3 w-20 rounded bg-white/5" />
@@ -125,7 +125,7 @@ const pages = [
     desc: "Dive deep into each mental model with rich reading content, text-to-speech narration, and word-level highlighting.",
     mockup: (
       <div className="aspect-video p-4 sm:p-6">
-        <div className="mb-3 flex items-center gap-3 border-b border-white/5 pb-3">
+        <div className="mb-3 flex items-center gap-3 border-b border-white/10 pb-3">
           <div className="h-6 w-6 rounded bg-white/5" />
           <div className="h-3 w-40 rounded bg-white/5" />
           <div className="ml-auto flex gap-2">
@@ -143,7 +143,7 @@ const pages = [
           <div className="mb-1 h-3 w-full rounded bg-white/[0.03]" />
           <div className="mb-1 h-3 w-4/5 rounded bg-white/[0.03]" />
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-white/5 bg-white/[0.02] p-2">
+        <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.02] p-2">
           <div className="h-6 w-6 rounded-full bg-white/10" />
           <div className="h-2 flex-1 rounded bg-white/5" />
           <div className="h-2 w-8 rounded bg-white/5" />
@@ -180,7 +180,7 @@ const pages = [
                       ? "border-[#a3a3a3] bg-[#a3a3a3]/20"
                       : item.current
                         ? "border-[#a3a3a3] bg-[#a3a3a3]/20"
-                        : "border-white/5 bg-white/[0.02]"
+                        : "border-white/10 bg-white/[0.02]"
                   }`}
                 >
                   <div
@@ -295,11 +295,11 @@ export default function PreviewCarousel() {
                   key={i}
                   className="min-w-0 shrink-0 grow-0 basis-full px-3 sm:basis-[80%] lg:basis-[65%]"
                 >
-                    <div className="flex flex-col overflow-hidden rounded-2xl border border-white/5 bg-[#050505] transition-all duration-500 hover:border-white/10">
+                    <div className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#050505] transition-all duration-500 hover:border-white/10">
                     <PageMockup title={page.title} url={page.url}>
                       {page.mockup}
                     </PageMockup>
-                    <div className="flex min-h-[160px] flex-col border-t border-white/5 p-5 sm:p-6">
+                    <div className="flex min-h-[160px] flex-col border-t border-white/10 p-5 sm:p-6">
                       <div className="mb-2 flex items-center gap-2">
                         <span
                           className="rounded-full px-3 py-0.5 text-xs font-bold uppercase tracking-wider"
@@ -328,17 +328,17 @@ export default function PreviewCarousel() {
 
           <button
             onClick={scrollPrev}
-            className="absolute -left-3 top-1/2 hidden -translate-y-1/2 rounded-full border border-white/10 bg-[#050505] p-3 text-white shadow-lg backdrop-blur transition-all duration-200 hover:bg-white/5 sm:block"
+            className="absolute -left-3 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-[#050505] p-2 text-white shadow-lg backdrop-blur transition-all duration-200 hover:bg-white/5 sm:p-3"
             aria-label="Previous slide"
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
           <button
             onClick={scrollNext}
-            className="absolute -right-3 top-1/2 hidden -translate-y-1/2 rounded-full border border-white/10 bg-[#050505] p-3 text-white shadow-lg backdrop-blur transition-all duration-200 hover:bg-white/5 sm:block"
+            className="absolute -right-3 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-[#050505] p-2 text-white shadow-lg backdrop-blur transition-all duration-200 hover:bg-white/5 sm:p-3"
             aria-label="Next slide"
           >
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
         </div>
       </div>
