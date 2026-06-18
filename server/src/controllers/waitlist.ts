@@ -48,3 +48,20 @@ export async function getWaitlistCount(
     next(err)
   }
 }
+
+export async function getRecentMembers(
+  _req: AuthRequest,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const members = await prisma.waitlist.findMany({
+      orderBy: { createdAt: "desc" },
+      take: 5,
+      select: { name: true, picture: true },
+    })
+    sendSuccess(res, members)
+  } catch (err) {
+    next(err)
+  }
+}

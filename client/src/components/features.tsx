@@ -1,37 +1,37 @@
-import { BookOpen, Zap, Network } from "lucide-react"
+import { Map, Waypoints, Brain } from "lucide-react"
 
 const steps = [
   {
-    icon: Network,
-    title: "Explore",
-    desc: "Browse an expansive library of mental models, filter by category, and discover your daily free theory.",
+    icon: Map,
+    title: "Pick a Path",
+    desc: "Choose a topic and enter an interactive learning map. Each map is a curated path of connected nodes — designed to take you from zero to fluent.",
     features: [
-      "200+ cognitive frameworks",
-      "22 categories to explore",
-      "Daily free mental model",
-      "Smart search & filters",
+      "Curated learning paths",
+      "Visual node-based maps",
+      "Connected topic networks",
+      "Pick up where you left off",
     ],
   },
   {
-    icon: BookOpen,
-    title: "Learn",
-    desc: "Read with immersive TTS narration, highlight key passages, and track your progress automatically.",
+    icon: Waypoints,
+    title: "Walk the Nodes",
+    desc: "Each node packs a short lesson, audio narration, quiz, reflection prompt, and action step — so every session is complete and hands-on.",
     features: [
-      "Text-to-speech narration",
-      "Word-level highlighting",
-      "Custom reading preferences",
-      "Progress auto-save",
+      "Short & focused lessons",
+      "Audio for on-the-go learning",
+      "Quizzes to lock it in",
+      "Reflections & action steps",
     ],
   },
   {
-    icon: Zap,
-    title: "Master",
-    desc: "Build action protocols, reflect with guided prompts, quiz yourself, and visualize connections in your knowledge graph.",
+    icon: Brain,
+    title: "Connect & Apply",
+    desc: "See how mental models link together as you progress. Build a lattice of interconnected ideas — and start thinking like the best.",
     features: [
-      "Interactive knowledge graphs",
-      "Quizzes & reflections",
-      "Action plans & highlights",
-      "XP & streak system",
+      "Visual node connections",
+      "Cross-model linking",
+      "Real-world application guides",
+      "Track your thinking growth",
     ],
   },
 ]
@@ -45,11 +45,11 @@ export default function Features() {
             How It Works
           </p>
           <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl">
-            Three Simple{" "}
-            <span className="text-[#525252]">Steps</span>
+            Learn Through{" "}
+            <span className="text-[#525252]">Interactive Maps</span>
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-lg text-[#a3a3a3]">
-            Transform your thinking with a structured approach.
+            Each topic is a learning path. Each path is a map of connected nodes — with short lessons, audio, quizzes, and action steps.
           </p>
         </div>
 
