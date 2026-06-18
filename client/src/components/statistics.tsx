@@ -16,7 +16,7 @@ const icons = [Eye, Users, TrendingUp, MessageSquare]
 
 function AnimatedCounter({ to, suffix }: { to: number; suffix: string }) {
   const [count, setCount] = useState(0)
-  const ref = useRef<HTMLSpanElement>(null)
+  const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true })
 
   useEffect(() => {
@@ -39,7 +39,7 @@ function AnimatedCounter({ to, suffix }: { to: number; suffix: string }) {
     return () => clearInterval(timer)
   }, [inView, to])
 
-  return <span ref={ref}>{count.toLocaleString()}{suffix}</span>
+  return <div ref={ref}>{count.toLocaleString()}{suffix}</div>
 }
 
 export default function Statistics() {
@@ -77,15 +77,28 @@ export default function Statistics() {
       : 0
 
   const stats = [
-    { value: data.visitors, suffix: "", label: "Total Visitors" },
-    { value: data.waitlist, suffix: "", label: "Waitlist Signups" },
-    { value: conversionRate, suffix: "%", label: "Conversion Rate" },
-    { value: data.feedback, suffix: "", label: "Feedback Submissions" },
+    { value: data.visitors, suffix: "", label: "Total Visitors", icon: Eye },
+    { value: data.waitlist, suffix: "", label: "Waitlist Signups", icon: Users },
+    { value: conversionRate, suffix: "%", label: "Conversion Rate", icon: TrendingUp },
+    { value: data.feedback, suffix: "", label: "Feedback Submissions", icon: MessageSquare },
   ]
 
   return (
-    <section className="w-full py-32 sm:py-40">
-      <div className="mx-auto max-w-[1200px] px-4 sm:px-6">
+    <section className="relative w-full py-32 sm:py-40 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0">
+        <motion.div
+          animate={{ x: [0, 60, 0], y: [0, -40, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute left-1/4 top-0 h-[300px] w-[300px] rounded-full bg-white/[0.02] blur-3xl"
+        />
+        <motion.div
+          animate={{ x: [0, -40, 0], y: [0, 60, 0] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="absolute right-1/4 bottom-0 h-[300px] w-[300px] rounded-full bg-white/[0.015] blur-3xl"
+        />
+      </div>
+
+      <div className="relative mx-auto max-w-[1200px] px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -104,32 +117,48 @@ export default function Statistics() {
           </p>
         </motion.div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, i) => {
-            const Icon = icons[i]
+            const Icon = stat.icon
             return (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#050505] p-8 transition-all duration-300 hover:border-white/20"
+                transition={{ delay: i * 0.12, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#050505] transition-all duration-300 hover:border-white/20"
               >
-                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.03),transparent_60%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <div className="relative">
-                  <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03]">
-                    <Icon className="h-5 w-5 text-[#a3a3a3]" />
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.04),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                <div className="relative p-8">
+                  <div className="mb-6 flex items-center justify-between">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] group-hover:border-white/20 transition-colors duration-300">
+                      <Icon className="h-5 w-5 text-[#a3a3a3]" />
+                    </div>
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.3 + i * 0.12 }}
+                      className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-wider text-[#525252]"
+                    >
+                      <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#a3a3a3] animate-pulse" />
+                      Live
+                    </motion.div>
                   </div>
-                  <p className="font-heading text-4xl font-black tracking-[-0.02em] sm:text-5xl">
+
+                  <div className="text-center font-heading text-5xl font-black tracking-[-0.03em] sm:text-6xl">
                     {loaded ? (
                       <AnimatedCounter to={stat.value} suffix={stat.suffix} />
                     ) : (
                       <span className="text-[#525252]">—</span>
                     )}
-                  </p>
-                  <p className="mt-2 text-sm text-[#737373]">{stat.label}</p>
+                  </div>
+                  <p className="mt-2 text-center text-sm text-[#737373]">{stat.label}</p>
                 </div>
+
+                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/[0.02] to-transparent pointer-events-none" />
               </motion.div>
             )
           })}

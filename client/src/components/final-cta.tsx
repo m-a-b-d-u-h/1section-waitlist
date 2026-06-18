@@ -58,51 +58,55 @@ export default function FinalCta() {
 
   return (
     <section id="waitlist" className="w-full py-32 sm:py-40">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-[#050505] to-black p-10 sm:p-16"
+          className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-[#050505] to-black p-12 sm:p-20"
         >
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute -right-32 -top-32 h-80 w-80 rounded-full bg-white/[0.03] blur-3xl" />
-            <div className="absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-white/[0.03] blur-3xl" />
+            <div className="absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-white/[0.03] blur-3xl" />
+            <div className="absolute -bottom-32 -left-32 h-[500px] w-[500px] rounded-full bg-white/[0.03] blur-3xl" />
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.02),transparent_70%)]" />
+            <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: "radial-gradient(circle, #fff 0.5px, transparent 0.5px)", backgroundSize: "32px 32px" }} />
           </div>
 
           <div className="relative z-10 text-center">
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-[#a3a3a3]">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-5 py-2 text-[#a3a3a3]">
               {user ? <Check size={14} /> : <Crown size={14} />}
               <span className="text-xs font-bold uppercase tracking-wider">
                 {user ? "You're on the list" : "Unlock Full Access"}
               </span>
             </div>
 
-            <h2 className="font-heading mt-8 text-3xl font-black tracking-[-0.04em] sm:text-4xl md:text-5xl">
+            <h2 className="font-heading mt-10 text-4xl font-black tracking-[-0.04em] sm:text-5xl md:text-6xl">
               {user
                 ? `You're in, ${user.name.split(" ")[0]}!`
                 : "Ready to master your mind?"}
             </h2>
-            <p className="mx-auto mt-4 max-w-lg text-[#737373]">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[#737373] sm:text-lg">
               {user
                 ? "We'll notify you when 1section launches. In the meantime, tell your friends about the waitlist."
                 : "Join the waitlist and be the first to access the complete library of mental models, knowledge graphs, and learning tools."}
             </p>
 
             {user ? (
-              <div className="mt-10 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.05] px-6 py-3">
+              <div className="mt-12 inline-flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.05] px-8 py-4">
                 {user.picture ? (
-                  <img src={user.picture} alt="" referrerPolicy="no-referrer" className="h-8 w-8 rounded-full" />
+                  <img src={user.picture} alt="" referrerPolicy="no-referrer" className="h-12 w-12 rounded-full ring-2 ring-white/10" />
                 ) : (
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] text-xs font-bold text-[#a3a3a3]">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] text-base font-bold text-[#a3a3a3] ring-2 ring-white/10">
                     {user.name[0]}
                   </div>
                 )}
                 <div className="text-left">
-                  <p className="text-sm font-medium text-white">{user.name}</p>
-                  <p className="text-xs text-[#a3a3a3]">Already on the waitlist</p>
+                  <p className="text-base font-semibold text-white">{user.name}</p>
+                  <p className="flex items-center gap-1.5 text-sm text-[#a3a3a3]">
+                    <Check size={12} />
+                    Already on the waitlist
+                  </p>
                 </div>
               </div>
             ) : (
@@ -111,11 +115,11 @@ export default function FinalCta() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+                className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
               >
                 <button
                   onClick={() => login()}
-                  className="group inline-flex items-center gap-3 rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-black transition-all duration-300 hover:opacity-90 hover:shadow-xl hover:shadow-white/10"
+                  className="group inline-flex items-center gap-3 rounded-full bg-white px-10 py-4 text-base font-semibold text-black transition-all duration-300 hover:opacity-90 hover:shadow-xl hover:shadow-white/10"
                 >
                   <GoogleLogo />
                   Join Waitlist with Google
@@ -125,8 +129,8 @@ export default function FinalCta() {
             )}
 
             {!user && (
-              <p className="mt-4 text-xs text-[#525252]">
-                No password needed &middot; Free during beta &middot; Cancel anytime
+              <p className="mt-5 text-sm text-[#525252]">
+                No password needed &middot; Get notified at launch &middot; No spam, ever
               </p>
             )}
           </div>
