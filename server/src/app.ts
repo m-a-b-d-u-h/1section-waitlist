@@ -35,11 +35,16 @@ app.use("/api/feedback", (req, _res, next) => {
   next()
 })
 
+const authLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 10,
+})
+
 app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() })
 })
 
-app.use("/api/auth", authRoutes)
+app.use("/api/auth", authLimiter, authRoutes)
 app.use("/api/waitlist", waitlistRoutes)
 app.use("/api/feedback", feedbackRoutes)
 

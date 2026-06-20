@@ -1,18 +1,32 @@
 import { useState } from "react"
 import { LogIn, Eye, EyeOff } from "lucide-react"
+import { API_BASE } from "./api"
 
 export default function Login({ onLogin }: { onLogin: (token: string) => void }) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [showPw, setShowPw] = useState(false)
   const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (username === "mabduh" && password === "mabduh") {
-      onLogin(btoa(`${username}:${password}`))
-    } else {
-      setError("Invalid credentials")
+    setLoading(true)
+    setError("")
+    const token = btoa(`${username}:${password}`)
+    try {
+      const res = await fetch(`${API_BASE}/waitlist/count`, {
+        headers: { Authorization: `Basic ${token}` },
+      })
+      if (!res.ok) {
+        setError("Invalid credentials")
+        return
+      }
+      onLogin(token)
+    } catch {
+      setError("Connection error")
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -69,10 +83,11 @@ export default function Login({ onLogin }: { onLogin: (token: string) => void })
 
         <button
           type="submit"
-          className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-semibold text-black transition-all hover:bg-[#e5e5e5] hover:shadow-lg hover:shadow-white/20"
+          disabled={loading}
+          className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-semibold text-black transition-all hover:bg-[#e5e5e5] hover:shadow-lg hover:shadow-white/20 disabled:opacity-50"
         >
           <LogIn size={16} />
-          Sign In
+          {loading ? "Signing in..." : "Sign In"}
         </button>
       </form>
     </div>

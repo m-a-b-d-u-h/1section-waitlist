@@ -7,6 +7,8 @@ export const config = {
   port: parseInt(process.env.PORT || "4000", 10),
   clientUrl: process.env.CLIENT_URL || "http://localhost:3000",
   adminUrl: process.env.ADMIN_URL || "http://localhost:3001",
+  adminUsername: process.env.ADMIN_USERNAME || "",
+  adminPassword: process.env.ADMIN_PASSWORD || "",
   databaseUrl: process.env.DATABASE_URL || "postgresql://postgres:postgres@localhost:5432/onesection",
   smtp: {
     host: process.env.SMTP_HOST || "",

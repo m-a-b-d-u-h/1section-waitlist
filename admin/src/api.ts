@@ -1,4 +1,4 @@
-const API = import.meta.env.VITE_API_URL || "http://localhost:4000"
+export const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:4000"
 
 export interface WaitlistEntry {
   id: string
@@ -21,7 +21,7 @@ export interface CountData {
 }
 
 async function fetchApi<T>(path: string, token: string): Promise<T> {
-  const res = await fetch(`${API}${path}`, {
+  const res = await fetch(`${API_BASE}${path}`, {
     headers: { Authorization: `Basic ${token}` },
   })
   if (!res.ok) {

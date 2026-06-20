@@ -1,8 +1,6 @@
 import { Response, NextFunction } from "express"
 import { AuthRequest } from "../types"
-
-const ADMIN_USER = "mabduh"
-const ADMIN_PASS = "mabduh"
+import { config } from "../config"
 
 export function adminAuth(req: AuthRequest, res: Response, next: NextFunction) {
   const header = req.headers.authorization
@@ -13,7 +11,7 @@ export function adminAuth(req: AuthRequest, res: Response, next: NextFunction) {
   try {
     const decoded = Buffer.from(header.replace("Basic ", ""), "base64").toString("utf-8")
     const [user, pass] = decoded.split(":")
-    if (user !== ADMIN_USER || pass !== ADMIN_PASS) {
+    if (user !== config.adminUsername || pass !== config.adminPassword) {
       return res.status(401).json({ success: false, error: "Invalid credentials" })
     }
     next()
