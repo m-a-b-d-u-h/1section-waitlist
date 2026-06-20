@@ -36,7 +36,7 @@ const cards = [
 
 export default function Analysis() {
   return (
-    <section className="w-full py-32 sm:py-40">
+    <section id="analysis" className="w-full py-32 sm:py-40">
       <div className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
