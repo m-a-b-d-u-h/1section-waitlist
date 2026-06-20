@@ -279,11 +279,11 @@ export default function PreviewCarousel() {
             Preview
           </p>
           <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl">
-            See it in{" "}
-            <span className="text-[#525252]">action</span>
+            Take a look{" "}
+            <span className="text-[#525252]">inside</span>
           </h2>
           <p className="mt-3 text-lg text-[#a3a3a3]">
-            A glimpse into the 1section experience.
+            A first look at your future dashboard — your command center with progress tracking, a library of mental models, daily bite-sized lessons, personal insights on your growth, and a community of fellow thinkers.
           </p>
         </motion.div>
 
