@@ -96,7 +96,9 @@ cd "$PROJECT_DIR/admin" && npm install
 
 # --- Prisma generate ---
 echo -e "${YELLOW}Generating Prisma client...${NC}"
-cd "$PROJECT_DIR/server" && npx prisma generate
+cd "$PROJECT_DIR/server"
+export $(grep -v '^#' .env | xargs)
+npx prisma generate
 
 # --- Build ---
 echo -e "${YELLOW}Building server...${NC}"
@@ -110,7 +112,9 @@ cd "$PROJECT_DIR/admin" && npm run build
 
 # --- DB migrations ---
 echo -e "${YELLOW}Applying database migrations...${NC}"
-cd "$PROJECT_DIR/server" && npx prisma migrate deploy
+cd "$PROJECT_DIR/server"
+export $(grep -v '^#' .env | xargs)
+npx prisma migrate deploy
 
 # --- PM2 start ---
 echo -e "${YELLOW}Starting PM2 processes...${NC}"
