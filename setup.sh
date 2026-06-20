@@ -25,7 +25,7 @@ fi
 
 if ! command -v git &> /dev/null; then
   echo -e "${RED}git is not installed. Install it first:${NC}"
-  echo -e "${YELLOW}  sudo apt-get install git${NC}"
+  echo -e "${YELLOW}  apt-get install git${NC}"
   exit 1
 fi
 
@@ -40,8 +40,7 @@ PROJECT_DIR="/opt/1section-waitlist"
 
 if [ ! -d "$PROJECT_DIR" ]; then
   echo -e "${YELLOW}Cloning repository...${NC}"
-  sudo mkdir -p "$PROJECT_DIR"
-  sudo chown -R $(whoami):$(whoami) "$PROJECT_DIR"
+  mkdir -p "$PROJECT_DIR"
   git clone https://github.com/m-a-b-d-u-h/1section-waitlist.git "$PROJECT_DIR"
 else
   echo -e "${YELLOW}Pulling latest changes...${NC}"
@@ -56,7 +55,7 @@ if [ ! -f server/.env ]; then
   cat > server/.env << 'ENVEOF'
 PORT=4000
 CLIENT_URL="http://localhost:3000"
-ADMIN_URL="http://localhost:3001"
+ADMIN_URL="http://localhost:4000"
 ADMIN_USERNAME="mabduh"
 ADMIN_PASSWORD="mabduh"
 DATABASE_URL="postgres://user:pass@host:5432/db?sslmode=require"
@@ -71,12 +70,12 @@ ENVEOF
   echo -e "${RED}⚠  EDIT server/.env with your real DATABASE_URL and secrets!${NC}"
 fi
 
-if [ ! -f client/.env.local ]; then
-  cat > client/.env.local << 'ENVEOF'
-NEXT_PUBLIC_API_URL="http://YOUR_SERVER_IP:4000"
+if [ ! -f client/.env.production ]; then
+  cat > client/.env.production << 'ENVEOF'
+NEXT_PUBLIC_API_URL="http://localhost:4000"
 NEXT_PUBLIC_GOOGLE_CLIENT_ID=""
 ENVEOF
-  echo -e "${YELLOW}  → Edit client/.env.local with your server IP and Google Client ID${NC}"
+  echo -e "${YELLOW}  → Edit client/.env.production with your Google Client ID${NC}"
 fi
 
 if [ ! -f admin/.env ]; then
@@ -127,7 +126,7 @@ pm2 start "npx next start -p 3000" --name "client"
 
 # --- Startup ---
 pm2 save
-sudo env PATH=$PATH:/usr/bin pm2 startup systemd -u $(whoami) --hp /home/$(whoami)
+pm2 startup systemd -u $(whoami) --hp /root
 
 echo -e "${GREEN}========================================${NC}"
 echo -e "${GREEN}  Setup complete!${NC}"
