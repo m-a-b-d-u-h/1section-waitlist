@@ -10,11 +10,23 @@ echo -e "${GREEN}========================================${NC}"
 echo -e "${GREEN}  1section-waitlist VPS Setup${NC}"
 echo -e "${GREEN}========================================${NC}"
 
-# --- Node.js ---
+# --- Check prerequisites ---
 if ! command -v node &> /dev/null; then
-  echo -e "${YELLOW}Installing Node.js...${NC}"
-  curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
-  sudo apt-get install -y nodejs git
+  echo -e "${RED}Node.js is not installed. Install it first via nvm:${NC}"
+  echo -e "${YELLOW}  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash${NC}"
+  echo -e "${YELLOW}  nvm install 22${NC}"
+  exit 1
+fi
+
+if ! command -v npm &> /dev/null; then
+  echo -e "${RED}npm is not available. Check your Node.js installation.${NC}"
+  exit 1
+fi
+
+if ! command -v git &> /dev/null; then
+  echo -e "${RED}git is not installed. Install it first:${NC}"
+  echo -e "${YELLOW}  sudo apt-get install git${NC}"
+  exit 1
 fi
 
 # --- PM2 & serve ---
