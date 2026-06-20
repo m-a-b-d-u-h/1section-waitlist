@@ -155,7 +155,7 @@ export default function Hero() {
           className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-xs font-medium tracking-wider text-[#a3a3a3]"
         >
           <div className="h-1.5 w-1.5 rounded-full bg-[#a3a3a3] animate-pulse" />
-          Interactive learning maps
+          A faster way to learn
         </motion.div>
 
         <motion.h1
@@ -164,8 +164,8 @@ export default function Hero() {
           transition={{ delay: 0.3, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="font-heading text-5xl font-black leading-[1.05] tracking-[-0.04em] sm:text-6xl md:text-7xl lg:text-8xl max-w-4xl"
         >
-          Master how the{" "}
-          <span className="text-[#a3a3a3]">world works</span>.
+          Shortcut to{" "}
+          <span className="text-[#a3a3a3]">everything</span>.
         </motion.h1>
 
         <motion.p
@@ -175,7 +175,7 @@ export default function Hero() {
           className="mt-6 max-w-xl text-base leading-relaxed text-[#737373] sm:text-lg"
         >
             Mental models are the shortcut. Learn them through interactive
-            maps, connected nodes, short lessons, audio, quizzes, and actions
+            maps, connected nodes, short lessons, audio, reflection, quizzes, and actions
             — the fastest way to understand how everything fits together.
         </motion.p>
 

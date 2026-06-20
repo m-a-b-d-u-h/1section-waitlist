@@ -2,15 +2,7 @@ import Link from "next/link"
 
 const linkGroups = [
   {
-    title: "Library",
-    links: [
-      { label: "Mental Models", href: "#" },
-      { label: "Categories", href: "#" },
-      { label: "Daily Free", href: "#" },
-    ],
-  },
-  {
-    title: "Product",
+    title: "Navigate",
     links: [
       { label: "Features", href: "#features" },
       { label: "Preview", href: "#preview" },
