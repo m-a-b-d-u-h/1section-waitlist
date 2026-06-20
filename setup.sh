@@ -94,14 +94,9 @@ cd "$PROJECT_DIR/client" && npm install
 echo -e "${YELLOW}Installing admin dependencies...${NC}"
 cd "$PROJECT_DIR/admin" && npm install
 
-# --- Extract DATABASE_URL from .env ---
-db_url() {
-  grep '^DATABASE_URL=' "$PROJECT_DIR/server/.env" | sed 's/^DATABASE_URL=//;s/"//g'
-}
-
 # --- Prisma generate ---
 echo -e "${YELLOW}Generating Prisma client...${NC}"
-cd "$PROJECT_DIR/server" && DATABASE_URL=$(db_url) npx prisma generate
+cd "$PROJECT_DIR/server" && npx prisma generate
 
 # --- Build ---
 echo -e "${YELLOW}Building server...${NC}"
@@ -112,10 +107,6 @@ cd "$PROJECT_DIR/client" && npm run build
 
 echo -e "${YELLOW}Building admin...${NC}"
 cd "$PROJECT_DIR/admin" && npm run build
-
-# --- DB migrations ---
-echo -e "${YELLOW}Applying database migrations...${NC}"
-cd "$PROJECT_DIR/server" && DATABASE_URL=$(db_url) npx prisma migrate deploy
 
 # --- PM2 start ---
 echo -e "${YELLOW}Starting PM2 processes...${NC}"
