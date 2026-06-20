@@ -29,15 +29,10 @@ if ! command -v git &> /dev/null; then
   exit 1
 fi
 
-# --- PM2 & serve ---
+# --- PM2 ---
 if ! command -v pm2 &> /dev/null; then
   echo -e "${YELLOW}Installing PM2...${NC}"
   npm install -g pm2
-fi
-
-if ! command -v serve &> /dev/null; then
-  echo -e "${YELLOW}Installing serve...${NC}"
-  npm install -g serve
 fi
 
 # --- Clone / pull ---
@@ -133,7 +128,7 @@ cd "$PROJECT_DIR/client"
 pm2 start node_modules/.bin/next --name "client" -- start -p 3000
 
 cd "$PROJECT_DIR/admin"
-pm2 start $(which serve) --name "admin" -- dist -l 3001 --no-clipboard
+pm2 start "npx --yes serve dist -l 3001 --no-clipboard" --name "admin"
 
 # --- Startup ---
 pm2 save
