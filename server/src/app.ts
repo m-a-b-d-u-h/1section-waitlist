@@ -1,4 +1,5 @@
 import express from "express"
+import path from "path"
 import cors from "cors"
 import helmet from "helmet"
 import rateLimit from "express-rate-limit"
@@ -47,6 +48,12 @@ app.get("/api/health", (_req, res) => {
 app.use("/api/auth", authLimiter, authRoutes)
 app.use("/api/waitlist", waitlistRoutes)
 app.use("/api/feedback", feedbackRoutes)
+
+const adminDist = path.join(__dirname, "../../admin/dist")
+app.use("/admin", express.static(adminDist))
+app.get("/admin/*", (_req, res) => {
+  res.sendFile(path.join(adminDist, "index.html"))
+})
 
 app.use(errorHandler)
 

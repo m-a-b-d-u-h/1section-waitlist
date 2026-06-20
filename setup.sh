@@ -81,9 +81,8 @@ fi
 
 if [ ! -f admin/.env ]; then
   cat > admin/.env << 'ENVEOF'
-VITE_API_URL="http://YOUR_SERVER_IP:4000"
+VITE_API_URL=""
 ENVEOF
-  echo -e "${YELLOW}  → Edit admin/.env with your server IP${NC}"
 fi
 
 # --- Install deps ---
@@ -119,16 +118,12 @@ echo -e "${YELLOW}Starting PM2 processes...${NC}"
 
 pm2 delete server 2>/dev/null || true
 pm2 delete client 2>/dev/null || true
-pm2 delete admin 2>/dev/null || true
 
 cd "$PROJECT_DIR/server"
 pm2 start dist/server.js --name "server" --watch dist
 
 cd "$PROJECT_DIR/client"
-pm2 start node_modules/.bin/next --name "client" -- start -p 3000
-
-cd "$PROJECT_DIR/admin"
-pm2 start "npx --yes serve dist -l 3001 --no-clipboard" --name "admin"
+pm2 start "npx next start -p 3000" --name "client"
 
 # --- Startup ---
 pm2 save
@@ -137,8 +132,8 @@ sudo env PATH=$PATH:/usr/bin pm2 startup systemd -u $(whoami) --hp /home/$(whoam
 echo -e "${GREEN}========================================${NC}"
 echo -e "${GREEN}  Setup complete!${NC}"
 echo -e "${GREEN}  Server  → http://localhost:4000${NC}"
+echo -e "${GREEN}  Admin   → http://localhost:4000/admin${NC}"
 echo -e "${GREEN}  Client  → http://localhost:3000${NC}"
-echo -e "${GREEN}  Admin   → http://localhost:3001${NC}"
 echo -e "${GREEN}  Logs    → pm2 logs${NC}"
 echo -e "${GREEN}  Status  → pm2 status${NC}"
 echo -e "${GREEN}========================================${NC}"
