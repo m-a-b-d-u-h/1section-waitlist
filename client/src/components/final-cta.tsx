@@ -107,22 +107,24 @@ export default function FinalCta() {
             </p>
 
             {user ? (
-              <div className="mt-12 inline-flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.05] px-8 py-4">
-                {user.picture ? (
-                  <img src={user.picture} alt="" referrerPolicy="no-referrer" className="h-12 w-12 rounded-full ring-2 ring-white/10" />
-                ) : (
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] text-base font-bold text-[#a3a3a3] ring-2 ring-white/10">
-                    {user.name[0]}
+              <>
+                <div className="mt-12 inline-flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.05] px-8 py-4">
+                  {user.picture ? (
+                    <img src={user.picture} alt="" referrerPolicy="no-referrer" className="h-12 w-12 rounded-full ring-2 ring-white/10" />
+                  ) : (
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] text-base font-bold text-[#a3a3a3] ring-2 ring-white/10">
+                      {user.name[0]}
+                    </div>
+                  )}
+                  <div className="text-left">
+                    <p className="text-base font-semibold text-white">{user.name}</p>
                   </div>
-                )}
-                <div className="text-left">
-                  <p className="text-base font-semibold text-white">{user.name}</p>
-                  <p className="flex items-center gap-1.5 text-sm text-[#a3a3a3]">
-                    <Check size={12} />
-                    {position ? `#${position} on the waitlist` : "Already on the waitlist"}
-                  </p>
                 </div>
-              </div>
+                <p className="mt-4 text-sm text-[#a3a3a3]">
+                  <Check size={12} className="mr-1.5 inline" />
+                  {position ? `#${position} on the waitlist` : "Already on the waitlist"}
+                </p>
+              </>
             ) : (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}

@@ -27,9 +27,9 @@ const linkGroups = [
   {
     title: "Connect",
     links: [
-      { label: "X (Twitter)", href: "https://x.com/1section_com" },
-      { label: "GitHub", href: "https://github.com/1section_com" },
-      { label: "LinkedIn", href: "https://linkedin.com/company/1section_com" },
+      { label: "Instagram", href: "https://instagram.com/1section_com" },
+      { label: "YouTube", href: "https://youtube.com/@1section_com" },
+      { label: "TikTok", href: "https://tiktok.com/@1section_com" },
     ],
   },
 ]
