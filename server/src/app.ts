@@ -1,18 +1,39 @@
 import express from "express"
 import cors from "cors"
 import helmet from "helmet"
+import rateLimit from "express-rate-limit"
 import { config } from "./config"
 import { errorHandler } from "./middleware/errorHandler"
 import authRoutes from "./routes/auth"
 import waitlistRoutes from "./routes/waitlist"
-import analyticsRoutes from "./routes/analytics"
 import feedbackRoutes from "./routes/feedback"
 
 const app = express()
 
 app.use(helmet())
-app.use(cors({ origin: config.clientUrl, credentials: true }))
+app.use(cors({ origin: [config.clientUrl, config.adminUrl], credentials: true }))
 app.use(express.json())
+
+const generalLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 60,
+})
+
+const writeLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 5,
+})
+
+app.use("/api/waitlist", generalLimiter)
+app.use("/api/feedback", generalLimiter)
+app.use("/api/waitlist", (req, _res, next) => {
+  if (req.method === "POST") return writeLimiter(req, _res, next)
+  next()
+})
+app.use("/api/feedback", (req, _res, next) => {
+  if (req.method === "POST") return writeLimiter(req, _res, next)
+  next()
+})
 
 app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() })
@@ -20,7 +41,6 @@ app.get("/api/health", (_req, res) => {
 
 app.use("/api/auth", authRoutes)
 app.use("/api/waitlist", waitlistRoutes)
-app.use("/api/analytics", analyticsRoutes)
 app.use("/api/feedback", feedbackRoutes)
 
 app.use(errorHandler)

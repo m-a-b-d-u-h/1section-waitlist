@@ -84,22 +84,48 @@ export default function Hero() {
   const { user, setUser } = useAuth()
   const [totalCount, setTotalCount] = useState<number | null>(null)
   const [members, setMembers] = useState<{ name: string; picture: string }[]>([])
+  const [position, setPosition] = useState<number | null>(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch(`${API}/api/waitlist/count`)
-      .then((r) => r.json())
-      .then((d) => d.data?.count && setTotalCount(d.data.count))
-      .catch(() => {})
-    fetch(`${API}/api/waitlist/recent`)
-      .then((r) => r.json())
-      .then((d) => d.data && setMembers(d.data))
-      .catch(() => {})
+    let cancelled = false
+    async function load() {
+      try {
+        const [countRes, membersRes] = await Promise.all([
+          fetch(`${API}/api/waitlist/count`),
+          fetch(`${API}/api/waitlist/recent`),
+        ])
+        const countData = await countRes.json()
+        const membersData = await membersRes.json()
+        if (!cancelled) {
+          if (countData.data?.count) setTotalCount(countData.data.count)
+          if (membersData.data) setMembers(membersData.data)
+        }
+      } catch {
+      } finally {
+        if (!cancelled) setLoading(false)
+      }
+    }
+    load()
+    return () => { cancelled = true }
   }, [])
+
+  useEffect(() => {
+    const token = localStorage.getItem("1section_access_token")
+    if (!user || !token) return
+    fetch(`${API}/api/waitlist/position`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((r) => r.json())
+      .then((d) => d.data?.position && setPosition(d.data.position))
+      .catch(() => {})
+  }, [user])
 
   const login = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       try {
         const accessToken = tokenResponse.access_token
+        localStorage.setItem("1section_access_token", accessToken)
         const userRes = await fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
           headers: { Authorization: `Bearer ${accessToken}` },
         })
@@ -172,7 +198,7 @@ export default function Hero() {
                 <p className="text-sm font-medium text-white">{user.name}</p>
                 <p className="flex items-center gap-1 text-xs text-[#a3a3a3]">
                   <Check size={10} />
-                  On the waitlist
+                  {position ? `#${position} on the waitlist` : "On the waitlist"}
                 </p>
               </div>
             </div>
@@ -198,7 +224,9 @@ export default function Hero() {
           className="mt-10 flex items-center gap-2 text-xs text-[#525252]"
         >
           <div className="flex -space-x-1.5">
-            {members.length > 0 ? members.slice(0, 4).map((m, i) => (
+            {loading ? [1, 2, 3, 4].map((i) => (
+              <div key={i} className="h-5 w-5 animate-pulse rounded-full border border-white/10 bg-white/10" />
+            )) : members.slice(0, 4).map((m, i) => (
               m.picture ? (
                 <img key={i} src={m.picture} alt="" referrerPolicy="no-referrer" className="h-5 w-5 rounded-full border border-black/20" />
               ) : (
@@ -206,12 +234,13 @@ export default function Hero() {
                   {m.name?.[0] ?? "?"}
                 </div>
               )
-            )) : [1, 2, 3, 4].map((i) => (
-              <div key={i} className="h-5 w-5 rounded-full border border-black/20 bg-white/5" />
             ))}
           </div>
           <span>
-            Trusted by <span className="text-[#a3a3a3]">{totalCount ?? 0}+</span> early adopters
+            {loading
+              ? <span className="text-[#525252]">Loading stats...</span>
+              : <>Trusted by <span className="text-[#a3a3a3]">{totalCount ?? 0}+</span> early adopters</>
+            }
           </span>
         </motion.div>
 

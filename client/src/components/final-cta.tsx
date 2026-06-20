@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { useGoogleLogin } from "@react-oauth/google"
 import { ArrowRight, Crown, Check } from "lucide-react"
@@ -31,11 +32,24 @@ async function joinWaitlist(accessToken: string) {
 
 export default function FinalCta() {
   const { user, setUser } = useAuth()
+  const [position, setPosition] = useState<number | null>(null)
+
+  useEffect(() => {
+    const token = localStorage.getItem("1section_access_token")
+    if (!user || !token) return
+    fetch(`${API}/api/waitlist/position`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((r) => r.json())
+      .then((d) => d.data?.position && setPosition(d.data.position))
+      .catch(() => {})
+  }, [user])
 
   const login = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       try {
         const accessToken = tokenResponse.access_token
+        localStorage.setItem("1section_access_token", accessToken)
 
         const userRes = await fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
           headers: { Authorization: `Bearer ${accessToken}` },
@@ -105,7 +119,7 @@ export default function FinalCta() {
                   <p className="text-base font-semibold text-white">{user.name}</p>
                   <p className="flex items-center gap-1.5 text-sm text-[#a3a3a3]">
                     <Check size={12} />
-                    Already on the waitlist
+                    {position ? `#${position} on the waitlist` : "Already on the waitlist"}
                   </p>
                 </div>
               </div>

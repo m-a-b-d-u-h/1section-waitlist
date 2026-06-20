@@ -27,6 +27,22 @@ export async function submitFeedback(
   }
 }
 
+export async function getAllFeedback(
+  _req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const entries = await prisma.feedback.findMany({
+      orderBy: { createdAt: "desc" },
+      select: { id: true, name: true, suggestion: true, createdAt: true },
+    })
+    sendSuccess(res, entries)
+  } catch (err) {
+    next(err)
+  }
+}
+
 export async function getFeedbackCount(
   _req: Request,
   res: Response,

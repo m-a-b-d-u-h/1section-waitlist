@@ -2,7 +2,6 @@ import Navbar from "@/components/navbar"
 import Hero from "@/components/hero"
 import PreviewCarousel from "@/components/preview-carousel"
 import Features from "@/components/features"
-import Statistics from "@/components/statistics"
 import Analysis from "@/components/analysis"
 import Feedback from "@/components/feedback"
 import FAQ from "@/components/faq"
@@ -17,7 +16,6 @@ export default function Home() {
         <Hero />
         <PreviewCarousel />
         <Features />
-        <Statistics />
         <Analysis />
         <Feedback />
         <FAQ />
