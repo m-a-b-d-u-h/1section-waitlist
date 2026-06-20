@@ -287,7 +287,12 @@ export default function PreviewCarousel() {
           </p>
         </motion.div>
 
+      </div>
+
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="relative">
+          <div className="pointer-events-none absolute inset-y-0 -left-3 z-10 hidden w-32 bg-gradient-to-r from-black via-black/80 to-transparent md:block" />
+          <div className="pointer-events-none absolute inset-y-0 -right-3 z-10 hidden w-32 bg-gradient-to-l from-black via-black/80 to-transparent md:block" />
           <div ref={emblaRef} className="-mx-3 overflow-hidden">
             <div className="flex">
               {pages.map((page, i) => (
@@ -328,14 +333,14 @@ export default function PreviewCarousel() {
 
           <button
             onClick={scrollPrev}
-            className="absolute -left-3 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-[#050505] p-2 text-white shadow-lg backdrop-blur transition-all duration-200 hover:bg-white/5 sm:p-3"
+            className="absolute -left-3 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/10 bg-[#050505] p-2 text-white shadow-lg backdrop-blur transition-all duration-200 hover:bg-white/5 sm:p-3"
             aria-label="Previous slide"
           >
             <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
           <button
             onClick={scrollNext}
-            className="absolute -right-3 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-[#050505] p-2 text-white shadow-lg backdrop-blur transition-all duration-200 hover:bg-white/5 sm:p-3"
+            className="absolute -right-3 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/10 bg-[#050505] p-2 text-white shadow-lg backdrop-blur transition-all duration-200 hover:bg-white/5 sm:p-3"
             aria-label="Next slide"
           >
             <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
