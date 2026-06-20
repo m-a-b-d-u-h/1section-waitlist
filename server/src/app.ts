@@ -50,10 +50,7 @@ app.use("/api/waitlist", waitlistRoutes)
 app.use("/api/feedback", feedbackRoutes)
 
 const adminDist = path.join(__dirname, "../../admin/dist")
-app.use("/admin", express.static(adminDist))
-app.get("/admin/*", (_req, res) => {
-  res.sendFile(path.join(adminDist, "index.html"))
-})
+app.use(express.static(adminDist))
 
 app.use(errorHandler)
 

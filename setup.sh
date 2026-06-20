@@ -132,7 +132,7 @@ sudo env PATH=$PATH:/usr/bin pm2 startup systemd -u $(whoami) --hp /home/$(whoam
 echo -e "${GREEN}========================================${NC}"
 echo -e "${GREEN}  Setup complete!${NC}"
 echo -e "${GREEN}  Server  → http://localhost:4000${NC}"
-echo -e "${GREEN}  Admin   → http://localhost:4000/admin${NC}"
+echo -e "${GREEN}  Admin   → http://localhost:4000 (root)${NC}"
 echo -e "${GREEN}  Client  → http://localhost:3000${NC}"
 echo -e "${GREEN}  Logs    → pm2 logs${NC}"
 echo -e "${GREEN}  Status  → pm2 status${NC}"
