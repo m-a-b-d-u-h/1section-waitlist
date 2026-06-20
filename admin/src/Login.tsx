@@ -15,7 +15,7 @@ export default function Login({ onLogin }: { onLogin: (token: string) => void })
     setError("")
     const token = btoa(`${username}:${password}`)
     try {
-      const res = await fetch(`${API_BASE}/waitlist/count`, {
+      const res = await fetch(`${API_BASE}/api/waitlist/all`, {
         headers: { Authorization: `Basic ${token}` },
       })
       if (!res.ok) {
