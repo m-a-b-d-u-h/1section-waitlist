@@ -212,10 +212,15 @@ export default function Hero() {
                 Get Early Access
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </button>
-              <span className="text-xs text-[#525252]">No password needed · Free access</span>
             </>
           )}
         </motion.div>
+
+        {!user && (
+          <p className="mt-5 text-sm text-[#525252]">
+            Free for early adopters. No strings attached.
+          </p>
+        )}
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
