@@ -255,7 +255,7 @@ const pages = [
 export default function PreviewList() {
   return (
     <section id="preview" className="w-full py-32 sm:py-40">
-      <div className="mx-auto max-w-[800px] px-4 sm:px-6">
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -266,11 +266,11 @@ export default function PreviewList() {
             Preview
           </p>
           <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl">
-            Take a look{" "}
-            <span className="text-[#525252]">inside</span>
+            See it in{" "}
+            <span className="text-[#525252]">action</span>
           </h2>
           <p className="mt-3 text-lg text-[#a3a3a3]">
-            A first look at your future dashboard — your command center with progress tracking, a library of mental models, daily bite-sized lessons, personal insights on your growth, and a community of fellow thinkers.
+            A glimpse into the 1section experience.
           </p>
         </motion.div>
 
@@ -282,7 +282,7 @@ export default function PreviewList() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#050505] transition-all duration-500 hover:border-white/20"
+              className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#050505] transition-all duration-500 hover:border-white/10"
             >
               <PageMockup title={page.title} url={page.url}>
                 {page.mockup}
