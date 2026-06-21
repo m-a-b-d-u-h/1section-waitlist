@@ -58,6 +58,9 @@ function VantaBackground() {
           spacing: 35,
           showDots: true,
         })
+        try {
+          instance.points?.forEach((p: any) => { p.r = (Math.random() * 4 - 2) * 5 })
+        } catch {}
         setTimeout(() => {
           setReady(true)
           try {
