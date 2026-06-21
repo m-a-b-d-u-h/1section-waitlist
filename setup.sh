@@ -36,7 +36,7 @@ if ! command -v pm2 &> /dev/null; then
 fi
 
 # --- Clone / pull ---
-PROJECT_DIR="/opt/1section-waitlist"
+PROJECT_DIR="$HOME/1section-waitlist"
 
 if [ ! -d "$PROJECT_DIR" ]; then
   echo -e "${YELLOW}Cloning repository...${NC}"
