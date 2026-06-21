@@ -18,7 +18,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://1section.com"),
   icons: {
     icon: "/favicon.svg",
+    apple: "/icon-512x512.png",
   },
+  manifest: "/manifest.json",
   openGraph: {
     title: "1section — Master How the World Works",
     description:
@@ -26,7 +28,7 @@ export const metadata: Metadata = {
     url: "https://1section.com",
     siteName: "1section",
     type: "website",
-    images: [{ url: "/favicon.svg", width: 32, height: 32 }],
+    images: [{ url: "/icon-512x512.png", width: 512, height: 512 }],
   },
   twitter: {
     card: "summary_large_image",

@@ -1,0 +1,17 @@
+{
+  "name": "1section",
+  "short_name": "1section",
+  "description": "Master how the world works through mental models",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
