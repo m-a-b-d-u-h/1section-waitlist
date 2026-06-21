@@ -256,7 +256,7 @@ export default function Hero() {
           transition={{ delay: 1.1, duration: 0.4 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs text-[#525252] transition-colors hover:text-white"
         >
-          <span>Explore the library</span>
+          <span>Scroll to explore</span>
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
