@@ -47,18 +47,18 @@ export default function Feedback() {
             <div className="relative z-10 text-center">
               <div
                 className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl shadow-lg shadow-black/20"
-                style={{ background: "#ffffff10", border: "1px solid #ffffff20", color: "#a3a3a3" }}
+                style={{ background: "#ffffff10", border: "1px solid #ffffff20", color: "#fb923c" }}
               >
                 <Lightbulb className="h-7 w-7" />
               </div>
-              <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#525252]">
+              <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#fb923c]">
                 Feedback
               </p>
-              <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl">
+              <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl text-white/80">
                 Have a Feature{" "}
-                <span className="text-[#525252]">Idea?</span>
+                <span className="text-[#fb923c]">Idea?</span>
               </h2>
-              <p className="mx-auto mt-3 max-w-2xl text-lg text-[#a3a3a3]">
+              <p className="mx-auto mt-3 max-w-2xl text-lg text-white/40">
                 Your feedback shapes 1section. Tell us what you&apos;d love to see.
               </p>
             </div>
@@ -70,10 +70,10 @@ export default function Feedback() {
                 className="mt-10 text-center"
               >
                 <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white/[0.05]">
-                  <Send className="h-6 w-6 text-[#a3a3a3]" />
+                  <Send className="h-6 w-6 text-white/25" />
                 </div>
                 <p className="font-heading text-lg font-bold">Thank you!</p>
-                <p className="mt-1 text-sm text-[#737373]">
+                <p className="mt-1 text-sm text-white/40">
                   Your feedback has been received. Our team will review it.
                 </p>
                 <button
@@ -82,7 +82,7 @@ export default function Feedback() {
                     setName("")
                     setSuggestion("")
                   }}
-                  className="mt-6 text-sm text-[#a3a3a3] underline-offset-4 hover:underline"
+                  className="mt-6 text-sm text-white/30 underline-offset-4 hover:underline"
                 >
                   Submit another
                 </button>
@@ -95,7 +95,7 @@ export default function Feedback() {
                     placeholder="Your name (optional)"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full rounded-xl border border-white/10 bg-[#030303] px-5 py-3.5 text-sm text-white placeholder:text-[#525252] outline-none transition-all duration-200 focus:border-white/20 focus:ring-1 focus:ring-white/10"
+                    className="w-full rounded-xl border border-white/10 bg-[#030303] px-5 py-3.5 text-sm text-white/90 placeholder:text-white/20 outline-none transition-all duration-200 focus:border-white/20 focus:ring-1 focus:ring-white/10"
                   />
                 </div>
                 <div>
@@ -105,7 +105,7 @@ export default function Feedback() {
                     onChange={(e) => setSuggestion(e.target.value)}
                     required
                     rows={5}
-                    className="w-full resize-none rounded-xl border border-white/10 bg-[#030303] px-5 py-3.5 text-sm text-white placeholder:text-[#525252] outline-none transition-all duration-200 focus:border-white/20 focus:ring-1 focus:ring-white/10"
+                    className="w-full resize-none rounded-xl border border-white/10 bg-[#030303] px-5 py-3.5 text-sm text-white/90 placeholder:text-white/20 outline-none transition-all duration-200 focus:border-white/20 focus:ring-1 focus:ring-white/10"
                   />
                 </div>
                 <div className="flex justify-center">

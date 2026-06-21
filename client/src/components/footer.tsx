@@ -35,18 +35,18 @@ export default function Footer() {
             <Link href="/">
               <img src="/favicon.svg" alt="1section" className="h-8 w-auto" />
             </Link>
-            <p className="text-sm leading-relaxed text-[#737373] max-w-xs">
+            <p className="text-sm leading-relaxed text-white/40 max-w-xs">
               A thinking library of mental models, audio lessons, and knowledge
               graphs.
             </p>
-            <p className="text-xs text-[#525252]">
+            <p className="text-xs text-white/30">
               Master your thinking library.
             </p>
           </div>
 
           {linkGroups.map((group) => (
             <div key={group.title}>
-              <h4 className="mb-4 text-xs font-bold uppercase tracking-[0.1em] text-[#525252]">
+              <h4 className="mb-4 text-xs font-bold uppercase tracking-[0.1em] text-white/30">
                 {group.title}
               </h4>
               <ul className="space-y-3">
@@ -54,7 +54,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-sm text-[#737373] transition-colors duration-200 hover:text-white"
+                      className="text-sm text-white/40 transition-colors duration-200 hover:text-white"
                     >
                       {link.label}
                     </a>
@@ -65,7 +65,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-16 border-t border-white/10 pt-8 text-center text-xs text-[#525252]">
+        <div className="mt-16 border-t border-white/10 pt-8 text-center text-xs text-white/30">
           &copy; {new Date().getFullYear()} 1section. All rights reserved.
         </div>
       </div>

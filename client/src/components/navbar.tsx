@@ -29,7 +29,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-[#a3a3a3] transition-colors duration-200 hover:text-white"
+              className="text-sm text-white/50 transition-colors duration-200 hover:text-white"
             >
               {link.label}
             </a>
@@ -63,7 +63,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="rounded-lg px-3 py-2 text-sm text-[#a3a3a3] transition-colors hover:bg-white/5 hover:text-white"
+              className="rounded-lg px-3 py-2 text-sm text-white/50 transition-colors hover:bg-white/5 hover:text-white"
             >
               {link.label}
             </a>

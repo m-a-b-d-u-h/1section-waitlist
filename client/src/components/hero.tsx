@@ -152,9 +152,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-xs font-medium tracking-wider text-[#a3a3a3]"
+          className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#fb923c]/20 bg-[#fb923c]/10 px-4 py-1.5 text-xs font-medium tracking-wider text-[#fb923c]"
         >
-          <div className="h-1.5 w-1.5 rounded-full bg-[#a3a3a3] animate-pulse" />
+          <div className="h-1.5 w-1.5 rounded-full bg-[#fb923c] animate-pulse" />
           A faster way to learn
         </motion.div>
 
@@ -165,14 +165,14 @@ export default function Hero() {
           className="font-heading text-5xl font-black leading-[1.05] tracking-[-0.04em] sm:text-6xl md:text-7xl lg:text-8xl max-w-4xl"
         >
           Shortcut to{" "}
-          <span className="text-[#a3a3a3]">everything</span>.
+          <span className="text-[#fb923c]">everything</span>.
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-6 max-w-xl text-base leading-relaxed text-[#737373] sm:text-lg"
+          className="mt-6 max-w-xl text-base leading-relaxed text-white/40 sm:text-lg"
         >
             Mental models are the shortcut. Learn them through interactive
             maps, connected nodes, short lessons, audio, reflection, quizzes, and actions
@@ -190,13 +190,13 @@ export default function Hero() {
               {user.picture ? (
                 <img src={user.picture} alt="" referrerPolicy="no-referrer" className="h-9 w-9 rounded-full" />
               ) : (
-                <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] text-sm font-bold text-[#a3a3a3]">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full border border-[#fb923c]/30 bg-[#fb923c]/10 text-sm font-bold text-[#fb923c]">
                   {user.name[0]}
                 </div>
               )}
               <div className="text-left">
-                <p className="text-sm font-medium text-white">{user.name}</p>
-                <p className="flex items-center gap-1 text-xs text-[#a3a3a3]">
+                <p className="text-sm font-medium text-white/90">{user.name}</p>
+                <p className="flex items-center gap-1 text-xs text-[#10b981]">
                   <Check size={10} />
                   {position ? `#${position} on the waitlist` : "On the waitlist"}
                 </p>
@@ -217,7 +217,7 @@ export default function Hero() {
         </motion.div>
 
         {!user && (
-          <p className="mt-5 text-sm text-[#525252]">
+          <p className="mt-5 text-sm text-white/25">
             Free for early adopters. No strings attached.
           </p>
         )}
@@ -226,7 +226,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-10 flex items-center gap-2 text-xs text-[#525252]"
+          className="mt-10 flex items-center gap-2 text-xs text-white/30"
         >
           <div className="flex -space-x-1.5">
             {loading ? [1, 2, 3, 4].map((i) => (
@@ -235,7 +235,7 @@ export default function Hero() {
               m.picture ? (
                 <img key={i} src={m.picture} alt="" referrerPolicy="no-referrer" className="h-5 w-5 rounded-full border border-black/20" />
               ) : (
-                <div key={i} className="h-5 w-5 rounded-full border border-black/20 bg-white/10 flex items-center justify-center text-[8px] font-medium text-[#737373]">
+                <div key={i} className="h-5 w-5 rounded-full border border-black/20 bg-white/10 flex items-center justify-center text-[8px] font-medium text-white/30">
                   {m.name?.[0] ?? "?"}
                 </div>
               )
@@ -243,8 +243,8 @@ export default function Hero() {
           </div>
           <span>
             {loading
-              ? <span className="text-[#525252]">Loading stats...</span>
-              : <>Trusted by <span className="text-[#a3a3a3]">{totalCount ?? 0}+</span> early adopters</>
+              ? <span className="text-white/25">Loading stats...</span>
+              : <>Trusted by <span className="text-white/30">{totalCount ?? 0}+</span> early adopters</>
             }
           </span>
         </motion.div>
@@ -254,7 +254,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1, duration: 0.4 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs text-[#525252] transition-colors hover:text-white"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs text-white/25 transition-colors hover:text-white"
         >
           <span>Scroll to explore</span>
           <motion.div

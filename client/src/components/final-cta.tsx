@@ -88,19 +88,19 @@ export default function FinalCta() {
           </div>
 
           <div className="relative z-10 text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-5 py-2 text-[#a3a3a3]">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#fb923c]/20 bg-[#fb923c]/10 px-5 py-2 text-[#fb923c]">
               {user ? <Check size={14} /> : <Crown size={14} />}
               <span className="text-xs font-bold uppercase tracking-wider">
                 {user ? "You're on the list" : "Unlock Full Access"}
               </span>
             </div>
 
-            <h2 className="font-heading mt-10 text-4xl font-black tracking-[-0.04em] sm:text-5xl md:text-6xl">
+            <h2 className="font-heading mt-10 text-4xl font-black tracking-[-0.04em] sm:text-5xl md:text-6xl text-white/80">
               {user
                 ? `You're in, ${user.name.split(" ")[0]}!`
                 : "Ready to master your mind?"}
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[#737373] sm:text-lg">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/50 sm:text-lg">
               {user
                 ? "We'll notify you when 1section launches. In the meantime, tell your friends about the waitlist."
                 : "Join the waitlist and be the first to access the complete library of mental models, knowledge graphs, and learning tools."}
@@ -112,15 +112,15 @@ export default function FinalCta() {
                   {user.picture ? (
                     <img src={user.picture} alt="" referrerPolicy="no-referrer" className="h-12 w-12 rounded-full ring-2 ring-white/10" />
                   ) : (
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] text-base font-bold text-[#a3a3a3] ring-2 ring-white/10">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#fb923c]/30 bg-[#fb923c]/10 text-base font-bold text-[#fb923c] ring-2 ring-white/10">
                       {user.name[0]}
                     </div>
                   )}
                   <div className="text-left">
-                    <p className="text-base font-semibold text-white">{user.name}</p>
+                    <p className="text-base font-semibold text-white/90">{user.name}</p>
                   </div>
                 </div>
-                <p className="mt-4 text-sm text-[#a3a3a3]">
+                <p className="mt-4 text-sm text-[#10b981]">
                   <Check size={12} className="mr-1.5 inline" />
                   {position ? `#${position} on the waitlist` : "Already on the waitlist"}
                 </p>
@@ -145,7 +145,7 @@ export default function FinalCta() {
             )}
 
             {!user && (
-              <p className="mt-5 text-sm text-[#525252]">
+              <p className="mt-5 text-sm text-white/30">
                 No password needed &middot; Get notified at launch &middot; No spam, ever
               </p>
             )}

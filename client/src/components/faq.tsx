@@ -38,14 +38,14 @@ export default function FAQ() {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#525252]">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#fb923c]">
             FAQ
           </p>
-          <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl">
+          <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl text-white/80">
             Frequently Asked{" "}
-            <span className="text-[#525252]">Questions</span>
+            <span className="text-[#fb923c]">Questions</span>
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-lg text-[#a3a3a3]">
+          <p className="mx-auto mt-3 max-w-2xl text-lg text-white/40">
             Everything you need to know about 1section.
           </p>
         </motion.div>
@@ -67,7 +67,7 @@ export default function FAQ() {
                   className="w-full p-6 text-left"
                 >
                   <div className="flex items-center justify-between gap-4">
-                    <span className="font-heading text-base font-bold text-white">
+                    <span className="font-heading text-base font-bold text-white/80">
                       {faq.q}
                     </span>
                     <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white/[0.03] transition-colors duration-200">
@@ -76,8 +76,8 @@ export default function FAQ() {
                         transition={{ duration: 0.2, ease: "easeInOut" }}
                         className="relative h-3 w-3"
                       >
-                        <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-[#a3a3a3]" />
-                        <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-[#a3a3a3]" />
+                        <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-white/30" />
+                        <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-white/30" />
                       </motion.div>
                     </div>
                   </div>
@@ -92,7 +92,7 @@ export default function FAQ() {
                     >
                       <div className="px-6 pb-6 pt-0">
                         <div className="h-px w-full bg-white/5 mb-4" />
-                        <p className="text-sm leading-relaxed text-[#737373]">{faq.a}</p>
+                        <p className="text-sm leading-relaxed text-white/40">{faq.a}</p>
                       </div>
                     </motion.div>
                   )}

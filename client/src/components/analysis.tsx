@@ -9,28 +9,28 @@ const cards = [
     title: "Knowledge Graphs",
     desc: "Visualize how mental models interconnect. Interactive nodes and edges reveal hidden relationships between every framework in the library.",
     stat: "Coming in v1.0",
-    color: "#a3a3a3",
+    color: "#3b82f6",
   },
   {
     icon: Headphones,
     title: "Text-to-Speech Narration",
     desc: "Listen to any theory with natural TTS narration. Word-level highlighting helps you follow along, perfect for learning on the go.",
     stat: "Audio for all 200+ models",
-    color: "#a3a3a3",
+    color: "#10b981",
   },
   {
     icon: Sparkles,
     title: "Daily Free Theory",
     desc: "A new professional framework unlocks every 24 hours. Build a daily learning habit without commitment, one mental model at a time.",
     stat: "Refreshes daily",
-    color: "#a3a3a3",
+    color: "#8b5cf6",
   },
   {
     icon: Award,
     title: "Quizzes & XP System",
     desc: "Test your understanding with interactive quizzes, earn XP for correct answers, track streaks, and unlock achievements as you progress.",
     stat: "Gamified learning",
-    color: "#a3a3a3",
+    color: "#f97316",
   },
 ]
 
@@ -44,14 +44,14 @@ export default function Analysis() {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#525252]">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#fb923c]">
             Features
           </p>
-          <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl">
+          <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl text-white/80">
             What&apos;s coming to{" "}
-            <span className="text-[#525252]">1section</span>
+            <span className="text-[#fb923c]">1section</span>
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-lg text-[#a3a3a3]">
+          <p className="mx-auto mt-3 max-w-2xl text-lg text-white/40">
             Every feature is designed to help you collect, connect, and apply
             mental models effortlessly.
           </p>
@@ -80,8 +80,8 @@ export default function Analysis() {
                 >
                   <card.icon className="h-6 w-6" />
                 </div>
-                <h3 className="font-heading mb-2 text-xl font-bold text-white">{card.title}</h3>
-                <p className="mb-4 text-sm leading-relaxed text-[#737373]">{card.desc}</p>
+                <h3 className="font-heading mb-2 text-xl font-bold text-white/80">{card.title}</h3>
+                <p className="mb-4 text-sm leading-relaxed text-white/40">{card.desc}</p>
                 <div className="flex items-center gap-2 text-xs font-semibold" style={{ color: card.color }}>
                   <span>{card.stat}</span>
                   <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
