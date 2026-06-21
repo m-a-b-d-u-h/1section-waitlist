@@ -44,12 +44,12 @@ export default function Analysis() {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#fb923c]">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#f97316]">
             Features
           </p>
-          <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl text-white/80">
+          <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl text-white">
             What&apos;s coming to{" "}
-            <span className="text-[#fb923c]">1section</span>
+            <span className="text-[#f97316]">1section</span>
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-lg text-white/40">
             Every feature is designed to help you collect, connect, and apply

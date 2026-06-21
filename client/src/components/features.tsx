@@ -44,12 +44,12 @@ export default function Features() {
     <section id="features" className="w-full py-32 sm:py-40">
       <div className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="mb-20 text-center">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#fb923c]">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#f97316]">
             How It Works
           </p>
-          <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl text-white/80">
+          <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl text-white">
             Learn Through{" "}
-            <span className="text-[#fb923c]">Interactive Maps</span>
+            <span className="text-[#f97316]">Interactive Maps</span>
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-lg text-white/40">
             Each topic is a learning path. Each path is a map of connected nodes — with short lessons, audio, quizzes, and action steps.

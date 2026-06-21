@@ -38,12 +38,12 @@ export default function FAQ() {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#fb923c]">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#f97316]">
             FAQ
           </p>
-          <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl text-white/80">
+          <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl text-white">
             Frequently Asked{" "}
-            <span className="text-[#fb923c]">Questions</span>
+            <span className="text-[#f97316]">Questions</span>
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-lg text-white/40">
             Everything you need to know about 1section.

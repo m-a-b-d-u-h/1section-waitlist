@@ -155,9 +155,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#fb923c]/20 bg-[#fb923c]/10 px-4 py-1.5 text-xs font-medium tracking-wider text-[#fb923c]"
+          className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#f97316]/20 bg-[#f97316]/10 px-4 py-1.5 text-xs font-medium tracking-wider text-[#f97316]"
         >
-          <div className="h-1.5 w-1.5 rounded-full bg-[#fb923c] animate-pulse" />
+          <div className="h-1.5 w-1.5 rounded-full bg-[#f97316] animate-pulse" />
           A faster way to learn
         </motion.div>
 
@@ -168,7 +168,7 @@ export default function Hero() {
           className="font-heading text-5xl font-black leading-[1.05] tracking-[-0.04em] sm:text-6xl md:text-7xl lg:text-8xl max-w-4xl"
         >
           Shortcut to{" "}
-          <span className="text-[#fb923c]">everything</span>.
+          <span className="text-[#f97316]">everything</span>.
         </motion.h1>
 
         <motion.p
@@ -193,7 +193,7 @@ export default function Hero() {
               {user.picture ? (
                 <img src={user.picture} alt="" referrerPolicy="no-referrer" className="h-9 w-9 rounded-full" />
               ) : (
-                <div className="flex h-9 w-9 items-center justify-center rounded-full border border-[#fb923c]/30 bg-[#fb923c]/10 text-sm font-bold text-[#fb923c]">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full border border-[#f97316]/30 bg-[#f97316]/10 text-sm font-bold text-[#f97316]">
                   {user.name[0]}
                 </div>
               )}

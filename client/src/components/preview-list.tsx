@@ -36,12 +36,12 @@ export default function PreviewList() {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#fb923c]">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#f97316]">
             Preview
           </p>
-          <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl text-white/80">
+          <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl text-white">
             Take a look{" "}
-            <span className="text-[#fb923c]">inside</span>
+            <span className="text-[#f97316]">inside</span>
           </h2>
           <p className="mt-3 text-lg text-white/50">
             A first look at your future dashboard — your command center with progress tracking, a library of mental models, daily bite-sized lessons, personal insights on your growth, and a community of fellow thinkers.

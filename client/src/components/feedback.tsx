@@ -47,16 +47,16 @@ export default function Feedback() {
             <div className="relative z-10 text-center">
               <div
                 className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl shadow-lg shadow-black/20"
-                style={{ background: "#ffffff10", border: "1px solid #ffffff20", color: "#fb923c" }}
+                style={{ background: "#ffffff10", border: "1px solid #ffffff20", color: "#f97316" }}
               >
                 <Lightbulb className="h-7 w-7" />
               </div>
-              <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#fb923c]">
+              <p className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[#f97316]">
                 Feedback
               </p>
-              <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl text-white/80">
+              <h2 className="font-heading text-5xl font-black tracking-[-0.04em] sm:text-6xl text-white">
                 Have a Feature{" "}
-                <span className="text-[#fb923c]">Idea?</span>
+                <span className="text-[#f97316]">Idea?</span>
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-lg text-white/40">
                 Your feedback shapes 1section. Tell us what you&apos;d love to see.

@@ -88,14 +88,14 @@ export default function FinalCta() {
           </div>
 
           <div className="relative z-10 text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#fb923c]/20 bg-[#fb923c]/10 px-5 py-2 text-[#fb923c]">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#f97316]/20 bg-[#f97316]/10 px-5 py-2 text-[#f97316]">
               {user ? <Check size={14} /> : <Crown size={14} />}
               <span className="text-xs font-bold uppercase tracking-wider">
                 {user ? "You're on the list" : "Unlock Full Access"}
               </span>
             </div>
 
-            <h2 className="font-heading mt-10 text-4xl font-black tracking-[-0.04em] sm:text-5xl md:text-6xl text-white/80">
+            <h2 className="font-heading mt-10 text-4xl font-black tracking-[-0.04em] sm:text-5xl md:text-6xl text-white">
               {user
                 ? `You're in, ${user.name.split(" ")[0]}!`
                 : "Ready to master your mind?"}
@@ -112,7 +112,7 @@ export default function FinalCta() {
                   {user.picture ? (
                     <img src={user.picture} alt="" referrerPolicy="no-referrer" className="h-12 w-12 rounded-full ring-2 ring-white/10" />
                   ) : (
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#fb923c]/30 bg-[#fb923c]/10 text-base font-bold text-[#fb923c] ring-2 ring-white/10">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#f97316]/30 bg-[#f97316]/10 text-base font-bold text-[#f97316] ring-2 ring-white/10">
                       {user.name[0]}
                     </div>
                   )}
