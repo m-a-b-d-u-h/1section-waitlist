@@ -1,6 +1,6 @@
 import Navbar from "@/components/navbar"
 import Hero from "@/components/hero"
-import PreviewCarousel from "@/components/preview-carousel"
+import PreviewList from "@/components/preview-list"
 import Features from "@/components/features"
 import Analysis from "@/components/analysis"
 import Feedback from "@/components/feedback"
@@ -14,7 +14,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <PreviewCarousel />
+        <PreviewList />
         <Features />
         <Analysis />
         <Feedback />

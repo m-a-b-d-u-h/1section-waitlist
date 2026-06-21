@@ -249,23 +249,7 @@ export default function Hero() {
           </span>
         </motion.div>
 
-        <motion.a
-          href="#preview"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.1, duration: 0.4 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs text-[#525252] transition-colors hover:text-white"
-        >
-          <span>Explore the library</span>
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M4 6l4 4 4-4" />
-            </svg>
-          </motion.div>
-        </motion.a>
+
       </div>
     </section>
   )

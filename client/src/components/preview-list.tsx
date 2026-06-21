@@ -1,9 +1,5 @@
 "use client"
 
-import { useCallback } from "react"
-import useEmblaCarousel from "embla-carousel-react"
-import Autoplay from "embla-carousel-autoplay"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 import { motion } from "framer-motion"
 
 interface PageMockupProps {
@@ -71,7 +67,6 @@ const pages = [
             <div className="h-16 rounded bg-white/[0.03]" />
           </div>
           <div className="rounded-lg border border-white/10 bg-white/[0.02] p-3">
-            <div className="mb-2 h-3 w-24 rounded bg-white/5" />
             <div className="mb-2 h-3 w-full rounded bg-white/[0.03]" />
             <div className="mb-2 h-3 w-3/4 rounded bg-white/[0.03]" />
             <div className="h-3 w-1/2 rounded bg-white/[0.03]" />
@@ -257,18 +252,10 @@ const pages = [
   },
 ]
 
-export default function PreviewCarousel() {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "center", skipSnaps: false, dragFree: false },
-    [Autoplay({ delay: 5000, stopOnInteraction: false })]
-  )
-
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi])
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi])
-
+export default function PreviewList() {
   return (
     <section id="preview" className="w-full py-32 sm:py-40">
-      <div className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <div className="mx-auto max-w-[800px] px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -287,64 +274,42 @@ export default function PreviewCarousel() {
           </p>
         </motion.div>
 
-      </div>
-
-      <div className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="relative">
-          <div className="pointer-events-none absolute inset-y-0 -left-3 z-10 hidden w-32 bg-gradient-to-r from-black via-black/80 to-transparent md:block" />
-          <div className="pointer-events-none absolute inset-y-0 -right-3 z-10 hidden w-32 bg-gradient-to-l from-black via-black/80 to-transparent md:block" />
-          <div ref={emblaRef} className="-mx-3 overflow-hidden">
-            <div className="flex">
-              {pages.map((page, i) => (
-                <div
-                  key={i}
-                  className="min-w-0 shrink-0 grow-0 basis-full px-3 sm:basis-[80%] lg:basis-[65%]"
-                >
-                    <div className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#050505] transition-all duration-500 hover:border-white/10">
-                    <PageMockup title={page.title} url={page.url}>
-                      {page.mockup}
-                    </PageMockup>
-                    <div className="flex min-h-[160px] flex-col border-t border-white/10 p-5 sm:p-6">
-                      <div className="mb-2 flex items-center gap-2">
-                        <span
-                          className="rounded-full px-3 py-0.5 text-xs font-bold uppercase tracking-wider"
-                          style={{
-                            color: page.color,
-                            borderColor: `${page.color}40`,
-                            background: `${page.color}15`,
-                            borderWidth: 1,
-                          }}
-                        >
-                          {page.badge}
-                        </span>
-                      </div>
-                      <h3 className="font-heading text-xl font-black tracking-[-0.02em] sm:text-2xl">
-                        {page.title}
-                      </h3>
-                      <p className="mt-1.5 flex-1 text-sm leading-relaxed text-[#737373]">
-                        {page.desc}
-                      </p>
-                    </div>
-                  </div>
+        <div className="space-y-12">
+          {pages.map((page, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#050505] transition-all duration-500 hover:border-white/20"
+            >
+              <PageMockup title={page.title} url={page.url}>
+                {page.mockup}
+              </PageMockup>
+              <div className="flex min-h-[160px] flex-col border-t border-white/10 p-5 sm:p-6">
+                <div className="mb-2 flex items-center gap-2">
+                  <span
+                    className="rounded-full px-3 py-0.5 text-xs font-bold uppercase tracking-wider"
+                    style={{
+                      color: page.color,
+                      borderColor: `${page.color}40`,
+                      background: `${page.color}15`,
+                      borderWidth: 1,
+                    }}
+                  >
+                    {page.badge}
+                  </span>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          <button
-            onClick={scrollPrev}
-            className="absolute -left-3 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/10 bg-[#050505] p-2 text-white shadow-lg backdrop-blur transition-all duration-200 hover:bg-white/5 sm:p-3"
-            aria-label="Previous slide"
-          >
-            <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
-          </button>
-          <button
-            onClick={scrollNext}
-            className="absolute -right-3 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/10 bg-[#050505] p-2 text-white shadow-lg backdrop-blur transition-all duration-200 hover:bg-white/5 sm:p-3"
-            aria-label="Next slide"
-          >
-            <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
-          </button>
+                <h3 className="font-heading text-xl font-black tracking-[-0.02em] sm:text-2xl">
+                  {page.title}
+                </h3>
+                <p className="mt-1.5 flex-1 text-sm leading-relaxed text-[#737373]">
+                  {page.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
