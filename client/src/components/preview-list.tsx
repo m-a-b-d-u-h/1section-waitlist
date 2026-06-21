@@ -57,7 +57,7 @@ export default function PreviewList() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
             >
-              <div className="overflow-hidden rounded-xl px-2.5 transition-transform duration-500 hover:scale-[1.02]" style={{ boxShadow: `-2px 0 0 0 ${page.color}, 2px 0 0 0 ${page.color}` }}>
+              <div className="overflow-hidden rounded-xl px-2.5 transition-transform duration-500 hover:scale-[1.02]" style={{ boxShadow: `-1px 0 0 0 ${page.color}40, 1px 0 0 0 ${page.color}40` }}>
                   <img src={page.image} alt={page.title} className="w-full" />
               </div>
               <div className="mt-5 px-1">
