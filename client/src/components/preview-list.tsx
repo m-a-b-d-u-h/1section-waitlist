@@ -50,25 +50,24 @@ export default function PreviewList() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#050505] transition-all duration-500 hover:border-white/10"
             >
-              {i === 0 ? (
-                <img src="/features/Screenshot_18-4-2026_12621_localhost.jpeg" alt="Dashboard" className="w-full" />
-              ) : i === 1 ? (
-                <img src="/features/screenshot-1779446043467.png" alt="Explore Modules" className="w-full" />
-              ) : (
-                <img src="/features/image%202.png" alt="Reading View" className="w-full" />
-              )}
-              <div className="flex min-h-[160px] flex-col border-t border-white/10 p-5 sm:p-6">
-                <div className="mb-2 flex items-center gap-2">
-                  <span className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-0.5 text-xs font-bold uppercase tracking-wider text-[#a3a3a3]">
-                    {page.badge}
-                  </span>
-                </div>
-                <h3 className="font-heading text-xl font-black tracking-[-0.02em] sm:text-2xl">
+              <div className="overflow-hidden rounded-xl">
+                {i === 0 ? (
+                  <img src="/features/Screenshot_18-4-2026_12621_localhost.jpeg" alt="Dashboard" className="w-full" />
+                ) : i === 1 ? (
+                  <img src="/features/screenshot-1779446043467.png" alt="Explore Modules" className="w-full" />
+                ) : (
+                  <img src="/features/image%202.png" alt="Reading View" className="w-full" />
+                )}
+              </div>
+              <div className="mt-6 px-1">
+                <span className="mb-3 inline-block text-[11px] font-bold uppercase tracking-[0.15em] text-[#525252]">
+                  {page.badge}
+                </span>
+                <h3 className="font-heading text-2xl font-black tracking-[-0.02em] text-white">
                   {page.title}
                 </h3>
-                <p className="mt-1.5 flex-1 text-sm leading-relaxed text-[#737373]">
+                <p className="mt-2 text-base leading-relaxed text-[#737373]">
                   {page.desc}
                 </p>
               </div>
