@@ -31,12 +31,9 @@ export default function Footer() {
     <footer className="w-full border-t border-white/10">
       <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
-          <div className="space-y-4 lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-xs font-black text-black">
-                S
-              </div>
-              <span className="font-heading text-lg font-bold tracking-tight">1section</span>
+          <div className="space-y-5 lg:col-span-2">
+            <Link href="/">
+              <img src="/favicon.svg" alt="1section" className="h-8 w-auto" />
             </Link>
             <p className="text-sm leading-relaxed text-[#737373] max-w-xs">
               A thinking library of mental models, audio lessons, and knowledge
